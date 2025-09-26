@@ -67,18 +67,60 @@
     </div>
   </div>
 
-  <!-- Flyers Section -->
+  <!-- Neighbborhood/ City Events Content Kit -->
   <div class="section">
     <h2>Neighbborhood/ City Events Content Kit</h2>
+    <div class="subsection">
+    <h3>Reel Template 1</h3>
     <div class="card">
       <h3>Reel Templates</h3>
       <img src="Saturday Morning Stroll (1).png" alt="Template preview">
       <a href="https://www.canva.com/design/DAGyIeITq9E/jn5dcSLk278ljfzdnoPNZA/view?utm_content=DAGyIeITq9E&utm_campaign=designshare&utm_medium=link&utm_source=publishsharelink&mode=preview" target="_blank">Open Template</a>
     </div>
     <div class="card">
-      <h3>Event Flyer</h3>
-      <a href="YOUR-FLYER-LINK-2" target="_blank">Open Template</a>
+      <h3>Reel Template 2</h3>
+      <img src="Neighborhood Glow Up.png" alt="Template preview">
+      <a href="https://www.canva.com/design/DAGyIb6nzVc/afG4jIGsMmeRr1XWnWnV7Q/view?utm_content=DAGyIb6nzVc&utm_campaign=designshare&utm_medium=link&utm_source=publishsharelink&mode=preview" target="_blank">Open Template</a>
     </div>
+    <div class="card">
+      <h3>Reel Template 3</h3>
+      <img src="Heres a secret.png" alt="Template preview">
+      <a href="https://www.canva.com/design/DAGyIYlMHwI/DOKhW1VzXKmw1ZbpPAm6FA/view?utm_content=DAGyIYlMHwI&utm_campaign=designshare&utm_medium=link&utm_source=publishsharelink&mode=preview" target="_blank">Open Template</a>
+    </div>
+    <div class="card">
+      <h3>Reel Template 4</h3>
+      <img src="You can get all this for price.png" alt="Template preview">
+      <a href="https://www.canva.com/design/DAGyIWJ9kZg/4ykrArpVI14GNuFBCJj3hA/view?utm_content=DAGyIWJ9kZg&utm_campaign=designshare&utm_medium=link&utm_source=publishsharelink&mode=preview" target="_blank">Open Template</a>
+    </div>
+    <div class="card">
+      <h3>Reel Template 5</h3>
+      <img src="You're 30minuites away.png" alt="Template preview">
+      <a href="https://www.canva.com/design/DAGyIY_U2fk/sVrchISt0Gi11fDOozAqDw/view?utm_content=DAGyIY_U2fk&utm_campaign=designshare&utm_medium=link&utm_source=publishsharelink&mode=preview" target="_blank">Open Template</a>
+    </div>
+    <div class="card">
+      <h3>Reel Template 6</h3>
+      <img src="The dream life.png" alt="Template preview">
+      <a href="https://www.canva.com/design/DAGyISR7nro/IAtLGLjhg_39MOTM-EnZYQ/view?utm_content=DAGyISR7nro&utm_campaign=designshare&utm_medium=link&utm_source=publishsharelink&mode=preview" target="_blank">Open Template</a>
+    </div>
+    <div class="card">
+      <h3>Reel Template 7</h3>
+      <img src="[City] in 3 words.png" alt="Template preview">
+      <a href="https://www.canva.com/design/DAGyIQgcjZE/uuABoKhFev6EMduRqo0YMg/view?utm_content=DAGyIQgcjZE&utm_campaign=designshare&utm_medium=link&utm_source=publishsharelink&mode=preview" target="_blank">Open Template</a>
+    </div>
+    <div class="card">
+      <h3>Reel Template 8</h3>
+      <img src="this place is practically perfect if you asked me.png" alt="Template preview">
+      <a href="https://www.canva.com/design/DAGyIcBBU1I/Ps1Wvzsbnkc-neCrav2SMQ/view?utm_content=DAGyIcBBU1I&utm_campaign=designshare&utm_medium=link&utm_source=publishsharelink&mode=preview" target="_blank">Open Template</a>
+    </div>
+ <!-- Subsection: Stories -->
+  <div class="subsection">
+    <h3>Story Templates</h3>
+    <div class="card">
+      <h4>Story Template 1</h4>
+      <a href="LINK-3" target="_blank">Open Template</a>
+    </div>
+  </div>
+</div>
   </div>
 
   <!-- Business Cards Section -->
