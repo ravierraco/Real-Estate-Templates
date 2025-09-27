@@ -3,7 +3,7 @@
 <head>
   <title>Template Library</title>
   <style>
-    body { font-family: Arial, sans-serif; background: #f7f7f7; padding: 20px; }
+    body { font-family: Arial, sans-serif; background: #f3d2da; padding: 20px; }
     h1, h2 { color: #333; }
     .section { margin-bottom: 40px; }
     .card {
@@ -186,14 +186,139 @@
   <div>
 </div>
 
-  <!-- Business Cards Section -->
+   <!-- Sellers Content Kit -->
   <div class="section">
-    <h2>💼 Business Card Templates</h2>
+    <h2>Sellers Content Kit</h2>
+    <div class="subsection">
+    <h3>Reel Templates</h3>
     <div class="card">
-      <h3>Modern Business Card</h3>
-      <a href="YOUR-CARD-LINK-1" target="_blank">Open Template</a>
+      <h3>Reel Templates 1</h3>
+      <img src="When you realize you are making the #1 sellers mistake.png" alt="Template preview">
+      <a href="https://www.canva.com/design/DAGyJYshqu0/Fi6lNaSAuBeW2SwKETtdXg/view?utm_content=DAGyJYshqu0&utm_campaign=designshare&utm_medium=link&utm_source=publishsharelink&mode=preview" target="_blank">Open Template</a>
     </div>
-  </div>
+    <div class="card">
+      <h3>Reel Template 2</h3>
+      <img src="$0 000 000 luxury trick I used on this house.png" alt="Template preview">
+      <a href="https://www.canva.com/design/DAGyJbfUQqc/aipe9ygKkAcHCrEZSpTzjQ/view?utm_content=DAGyJbfUQqc&utm_campaign=designshare&utm_medium=link&utm_source=publishsharelink&mode=preview" target="_blank">Open Template</a>
+    </div>
+    <div class="card">
+      <h3>Reel Template 3</h3>
+      <img src="When you realize that this home mastered the 8 second rule.png" alt="Template preview">
+      <a href="https://www.canva.com/design/DAGyJQuR1Ik/GwU22G2N2YadkscZjmtVgA/view?utm_content=DAGyJQuR1Ik&utm_campaign=designshare&utm_medium=link&utm_source=publishsharelink&mode=preview" target="_blank">Open Template</a>
+    </div>
+    <div class="card">
+      <h3>Reel Template 4</h3>
+      <img src="POV your agent marketed your house perfectly.png" alt="Template preview">
+      <a href="https://www.canva.com/design/DAGyJVkJ2c4/x9td6GTGYUR7r83pUDlZVA/view?utm_content=DAGyJVkJ2c4&utm_campaign=designshare&utm_medium=link&utm_source=publishsharelink&mode=preview" target="_blank">Open Template</a>
+    </div>
+    <div class="card">
+      <h3>Reel Template 5</h3>
+      <img src="First offer can be the best offer.png" alt="Template preview">
+      <a href="https://www.canva.com/design/DAGyJfLSIGY/ut-SUlXvcS24UqYJgGv4OA/view?utm_content=DAGyJfLSIGY&utm_campaign=designshare&utm_medium=link&utm_source=publishsharelink&mode=preview" target="_blank">Open Template</a>
+    </div>
+    <div class="card">
+      <h3>Reel Template 6</h3>
+      <img src="POV.png" alt="Template preview">
+      <a href="https://www.canva.com/design/DAGyJauSf7I/8Gzxr5ooIP04XtSbBsA04A/view?utm_content=DAGyJauSf7I&utm_campaign=designshare&utm_medium=link&utm_source=publishsharelink&mode=preview" target="_blank">Open Template</a>
+    </div>
+    <div class="card">
+      <h3>Reel Template 7</h3>
+      <img src="$0 000 000.png" alt="Template preview">
+      <a href="https://www.canva.com/design/DAGyJVp6CJI/Ry-yZ2nfsD2-ZaBYZwaG1w/view?utm_content=DAGyJVp6CJI&utm_campaign=designshare&utm_medium=link&utm_source=publishsharelink&mode=preview" target="_blank">Open Template</a>
+    </div>
+    <div class="card">
+      <h3>Reel Template 7</h3>
+      <img src="When you realise that very seller in [city] should know this.png" alt="Template preview">
+      <a href="https://www.canva.com/design/DAGyJTj-2Cw/BSb9H2VB6NjBxfRxIdfVOw/view?utm_content=DAGyJTj-2Cw&utm_campaign=designshare&utm_medium=link&utm_source=publishsharelink&mode=preview" target="_blank">Open Template</a>
+    </div>
+    <div class="card">
+      <h3>Reel Template 7</h3>
+      <img src="Hold this secret.png" alt="Template preview">
+      <a href="https://www.canva.com/design/DAGyJS_JRCw/re0YzIbIFUCnWp6DeHAPDA/view?utm_content=DAGyJS_JRCw&utm_campaign=designshare&utm_medium=link&utm_source=publishsharelink&mode=preview" target="_blank">Open Template</a>
+    </div>
+    <div class="card">
+      <h3>Reel Template 7</h3>
+      <img src="$0 000 000.png" alt="Template preview">
+      <a href="https://www.canva.com/design/DAGyJeCW6ck/zYvLZxQ82ylnhJsPSxeVBw/view?utm_content=DAGyJeCW6ck&utm_campaign=designshare&utm_medium=link&utm_source=publishsharelink&mode=preview" target="_blank">Open Template</a>
+    </div>
+<!-- Subsection: Stories -->
+  <div class="subsection">
+    <h3>Story Templates</h3>
+    <div class="card">
+      <h4>Story Template 1</h4>
+      <img src="new listing on the way.png" alt="Template preview">
+      <a href="https://www.canva.com/design/DAGyJYolBYI/Xw7Qf0Eo7j3s5O2AHRPl9g/view?utm_content=DAGyJYolBYI&utm_campaign=designshare&utm_medium=link&utm_source=publishsharelink&mode=preview" target="_blank">Open Template</a>
+    </div>
+    <div class="card">
+      <h4>Story Template 2</h4>
+      <img src="i'm ready fto move a vase from the left to the right and call it staging.png" alt="Template preview">
+      <a href="https://www.canva.com/design/DAGyJXCtoF8/nBSEnnvVPbXtS0tj1nUcxA/view?utm_content=DAGyJXCtoF8&utm_campaign=designshare&utm_medium=link&utm_source=publishsharelink&mode=preview" target="_blank">Open Template</a>
+    </div>
+    <div class="card">
+      <h4>Story Template 2</h4>
+      <img src="i am in love.png" alt="Template preview">
+      <a href="https://www.canva.com/design/DAGyIVYxjn0/fjaQRzRDZE3AwlN4pvLxIA/view?utm_content=DAGyIVYxjn0&utm_campaign=designshare&utm_medium=link&utm_source=publishsharelink&mode=preview" target="_blank">Open Template</a>
+    </div>
+    <div class="card">
+      <h4>Story Template 2</h4>
+      <img src="i'm having that kind of day.png" alt="Template preview">
+      <a href="https://www.canva.com/design/DAGyJd8U-d8/QK6MdXOyvIRjQzaaRMzyAg/view?utm_content=DAGyJd8U-d8&utm_campaign=designshare&utm_medium=link&utm_source=publishsharelink&mode=preview" target="_blank">Open Template</a>
+    </div>
+    <div class="card">
+      <h4>Story Template 2</h4>
+      <img src="my second coffee today.png" alt="Template preview">
+      <a href="https://www.canva.com/design/DAGyJd8U-d8/QK6MdXOyvIRjQzaaRMzyAg/view?utm_content=DAGyJd8U-d8&utm_campaign=designshare&utm_medium=link&utm_source=publishsharelink&mode=preview" target="_blank">Open Template</a>
+    </div>
+    <div class="card">
+      <h4>Story Template 2</h4>
+      <img src="This just in [house sold].png" alt="Template preview">
+      <a href="https://www.canva.com/design/DAGyJUOpC-w/adnBGCuRBpfG3Ip0Ldn62A/view?utm_content=DAGyJUOpC-w&utm_campaign=designshare&utm_medium=link&utm_source=publishsharelink&mode=preview" target="_blank">Open Template</a>
+    </div>
+    <div class="card">
+      <h4>Story Template 2</h4>
+      <img src="had to treat myself after my sale today.png" alt="Template preview">
+      <a href="https://www.canva.com/design/DAGyJYFw5HI/vC_FEzIRnj0I7Qav-7YmJQ/view?utm_content=DAGyJYFw5HI&utm_campaign=designshare&utm_medium=link&utm_source=publishsharelink&mode=preview" target="_blank">Open Template</a>
+    </div>
+    <div class="card">
+      <h4>Story Template 2</h4>
+      <img src="didn’t get the listing that i wanted .png" alt="Template preview">
+      <a href="https://www.canva.com/design/DAGyJdh5LdA/EDjqZtvYwDtTM2r8tC6M1g/view?utm_content=DAGyJdh5LdA&utm_campaign=designshare&utm_medium=link&utm_source=publishsharelink&mode=preview" target="_blank">Open Template</a>
+    </div>
+<!-- Subsection: Stories -->
+  <div class="subsection">
+    <h3>Carousel Templates Templates</h3>
+    <div class="card">
+      <h4>Carousel Template 1</h4>
+      <img src="REALITY OF SELLING YOUR HOME.png" alt="Template preview">
+      <a href="https://www.canva.com/design/DAGyJejV3wc/JgC573P7WsO-60oAFRsK4Q/view?utm_content=DAGyJejV3wc&utm_campaign=designshare&utm_medium=link&utm_source=publishsharelink&mode=preview" target="_blank">Open Template</a>
+    </div>
+    <div class="card">
+      <h4>Carousel Template 1</h4>
+      <img src="BUYERS NOTICE THIS WHEN TOURING.png" alt="Template preview">
+      <a href="https://www.canva.com/design/DAGyJcjo7D0/9gc27R4ZmZIJv9joruZWcw/view?utm_content=DAGyJcjo7D0&utm_campaign=designshare&utm_medium=link&utm_source=publishsharelink&mode=preview" target="_blank">Open Template</a>
+    </div>
+    <div class="card">
+      <h4>Carousel Template 1</h4>
+      <img src="STAGING SECRETS THAT BUYERS LOVE.png" alt="Template preview">
+      <a href="https://www.canva.com/design/DAGyJVGqBU0/v2qypHBpCLjX-FwoVjrw7Q/view?utm_content=DAGyJVGqBU0&utm_campaign=designshare&utm_medium=link&utm_source=publishsharelink&mode=preview" target="_blank">Open Template</a>
+    </div>
+    <div class="card">
+      <h4>Carousel Template 1</h4>
+      <img src="TIMELINE AFTER YOU DECIDE TO SELL.png" alt="Template preview">
+      <a href="https://www.canva.com/design/DAGyJeONQ5c/VEoj_Jxg_gtW3y09r5vD0w/view?utm_content=DAGyJeONQ5c&utm_campaign=designshare&utm_medium=link&utm_source=publishsharelink&mode=preview" target="_blank">Open Template</a>
+    </div>
+    <div class="card">
+      <h4>Carousel Template 1</h4>
+      <img src="SELL NOW OR WAIT.png" alt="Template preview">
+      <a href="https://www.canva.com/design/DAGyJQ74Qf8/HRjHaq7FE0ntGluiSSqZ0w/view?utm_content=DAGyJQ74Qf8&utm_campaign=designshare&utm_medium=link&utm_source=publishsharelink&mode=preview" target="_blank">Open Template</a>
+    </div>
+    <div class="card">
+      <h4>Carousel Template 1</h4>
+      <img src="SELL FAST AND GET TOP DOLLAR.png" alt="Template preview">
+      <a href="https://www.canva.com/design/DAGyJccWt78/SqkU9-a7Scpo9Cl_DY5Q4A/view?utm_content=DAGyJccWt78&utm_campaign=designshare&utm_medium=link&utm_source=publishsharelink&mode=preview" target="_blank">Open Template</a>
+    </div>
+  <div>
+</div>
 
 </body>
 </html>
