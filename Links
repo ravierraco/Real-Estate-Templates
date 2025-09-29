@@ -27,9 +27,64 @@
 <body>
   <h1>Template Library</h1>
 
-  <!-- Instagram Section -->
+  <!-- First Time Buyer's Content Kit -->
   <div class="section">
-    <h2>First Time Buyer Content</h2>
+    <h2>First Time Buyer's Content Kit</h2>
+    <div class="subsection">
+    <h3>Reel Templates</h3>
+    <div class="card">
+      <h3>Reel Template 1</h3>
+      <img src="First time buyers.png" alt="Template preview">
+      <a href="https://www.canva.com/design/DAGxk9VxXQE/aG0WwtVtiWqCt0JM9j-nUQ/view?utm_content=DAGxk9VxXQE&utm_campaign=designshare&utm_medium=link&utm_source=publishsharelink&mode=preview" target="_blank">Open Template</a>
+    </div>
+    <div class="card">
+      <h3>Reel Template 2</h3>
+      <img src="Emotional Rollercoaster Of Buying Your First Home.png" alt="Template preview">
+      <a href="https://www.canva.com/design/DAGxksRX3_Y/f9ks4Bh8_mJ5JbghsIMeQA/view?utm_content=DAGxksRX3_Y&utm_campaign=designshare&utm_medium=link&utm_source=publishsharelink&mode=preview" target="_blank">Open Template</a>
+    </div>
+    <div class="card">
+      <h3>Reel Template 3</h3>
+      <img src="when my clients realize that these mistakes COST them so much.png" alt="Template preview">
+      <a href="https://www.canva.com/design/DAGxkyjgF00/0Mo-zZjsO9fYLZ6ITUqA-g/view?utm_content=DAGxkyjgF00&utm_campaign=designshare&utm_medium=link&utm_source=publishsharelink&mode=preview" target="_blank">Open Template</a>
+    </div>
+    <div class="card">
+      <h3>Reel Template 4</h3>
+      <img src="thinking of sitting in your new home before new years?.png" alt="Template preview">
+      <a href="https://www.canva.com/design/DAGxki22yTQ/Y1tDgBdZ65tzE3-1CmyHBA/view?utm_content=DAGxki22yTQ&utm_campaign=designshare&utm_medium=link&utm_source=publishsharelink&mode=preview" target="_blank">Open Template</a>
+    </div>
+    <div class="card">
+      <h3>Reel Template 5</h3>
+      <img src="i'm gonna save you a headache.png" alt="Template preview">
+      <a href="https://www.canva.com/design/DAGxkhmDPdI/6JZOfnUKeJEeLFKvIWnPCQ/view?utm_content=DAGxkhmDPdI&utm_campaign=designshare&utm_medium=link&utm_source=publishsharelink&mode=preview" target="_blank">Open Template</a>
+    </div>
+    <div class="card">
+      <h3>Reel Template 6</h3>
+      <img src="POV: you're pre approved and suddenly every house looks like your dream house.png" alt="Template preview">
+      <a href="https://www.canva.com/design/DAGxkT7oQnE/mG0PZYOs9hhqxW1nua2qLg/view?utm_content=DAGxkT7oQnE&utm_campaign=designshare&utm_medium=link&utm_source=publishsharelink&mode=preview" target="_blank">Open Template</a>
+    </div>
+    <div class="card">
+      <h3>Reel Template 7</h3>
+      <img src="Closing Costs explained in 10 seconds.png" alt="Template preview">
+      <a href="https://www.canva.com/design/DAGxkQMd6hQ/IrPyg9Z2VfJhjHOfhVAXYg/view?utm_content=DAGxkQMd6hQ&utm_campaign=designshare&utm_medium=link&utm_source=publishsharelink&mode=preview" target="_blank">Open Template</a>
+    </div>
+    <div class="card">
+      <h3>Reel Template 8</h3>
+      <img src="POV: You thought buying a house was just saving for a downpayment.png" alt="Template preview">
+      <a href="https://www.canva.com/design/DAGxkSE2ax8/FhThi_TngGlv_k5lkeUB_g/view?utm_content=DAGxkSE2ax8&utm_campaign=designshare&utm_medium=link&utm_source=publishsharelink&mode=preview" target="_blank">Open Template</a>
+    </div>
+    <div class="card">
+      <h3>Reel Template 9</h3>
+      <img src="POV: You start hear 'escrow', 'underwriting' and 'earnest money' for the first time.png" alt="Template preview">
+      <a href="https://www.canva.com/design/DAGxkbblBWQ/crRXZGhlJGN7s-uVdtbdfw/view?utm_content=DAGxkbblBWQ&utm_campaign=designshare&utm_medium=link&utm_source=publishsharelink&mode=preview" target="_blank">Open Template</a>
+    </div>
+    <div class="card">
+      <h3>Reel Template 10</h3>
+      <img src="You don't need 20% downpayment to buy a home.png" alt="Template preview">
+      <a href="https://www.canva.com/design/DAGxk9uA6v0/KNkDAF4_4wY0osKpgiBf8Q/view?utm_content=DAGxk9uA6v0&utm_campaign=designshare&utm_medium=link&utm_source=publishsharelink&mode=preview" target="_blank">Open Template</a>
+    </div>
+<!-- Subsection: Stories -->
+  <div class="subsection">
+    <h3>Carousel Templates</h3>
     <div class="card">
       <h3>Carousel Templates</h3>
       <img src="7 Steps to buying your first home.png" alt="Template preview">
@@ -64,6 +119,34 @@
       <h3>Carousel Templates</h3>
       <img src="Myth Or Fact.png" alt="Template preview">
       <a href="https://www.canva.com/design/DAGxsIdfGRU/TG_GravQYOyNMY7gNlQRig/view?utm_content=DAGxsIdfGRU&utm_campaign=designshare&utm_medium=link&utm_source=publishsharelink&mode=preview" target="_blank">Open Template</a>
+    </div>
+<!-- Subsection: Stories -->
+  <div class="subsection">
+    <h3>Story Templates</h3>
+    <div class="card">
+      <h4>Story Template 1</h4>
+      <img src="First time buyer tips dropping Friday.png" alt="Template preview">
+      <a href="https://www.canva.com/design/DAGxlDnBuCU/wud6l4ls0vG99MRahcfbEg/view?utm_content=DAGxlDnBuCU&utm_campaign=designshare&utm_medium=link&utm_source=publishsharelink&mode=preview" target="_blank">Open Template</a>
+    </div>
+    <div class="card">
+      <h4>Story Template 2</h4>
+      <img src="What are your thoughts.png" alt="Template preview">
+      <a href="https://www.canva.com/design/DAGxkhmDPdI/6JZOfnUKeJEeLFKvIWnPCQ/view?utm_content=DAGxkhmDPdI&utm_campaign=designshare&utm_medium=link&utm_source=publishsharelink&mode=preview" target="_blank">Open Template</a>
+    </div>
+    <div class="card">
+      <h4>Story Template 3</h4>
+      <img src="Which would you pick for your first home.png" alt="Template preview">
+      <a href="https://www.canva.com/design/DAGxk__kODE/VwhfpV7G3Jm66R-QApldqA/view?utm_content=DAGxk__kODE&utm_campaign=designshare&utm_medium=link&utm_source=publishsharelink&mode=preview" target="_blank">Open Template</a>
+    </div>
+    <div class="card">
+      <h4>Story Template 4</h4>
+      <img src="Have you talked to a lender yet?.png" alt="Template preview">
+      <a href="https://www.canva.com/design/DAGxk4qxPjc/1dFOyoq7ps1GOBdWGkdUtw/view?utm_content=DAGxk4qxPjc&utm_campaign=designshare&utm_medium=link&utm_source=publishsharelink&mode=preview" target="_blank">Open Template</a>
+    </div>
+    <div class="card">
+      <h4>Story Template 5</h4>
+      <img src="True or false: yoou need 20% down-payment on your first home.png" alt="Template preview">
+      <a href="https://www.canva.com/design/DAGxk3WhDiM/njNeFtHR52mbk_3AwynazA/view?utm_content=DAGxk3WhDiM&utm_campaign=designshare&utm_medium=link&utm_source=publishsharelink&mode=preview" target="_blank">Open Template</a>
     </div>
   </div>
 
