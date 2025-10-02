@@ -411,13 +411,22 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Real Esttate Templates</title>
   <style>
-    body {
-      margin: 0;
-      padding: 0;
-      font-family: Arial, sans-serif;
-      background-color: #0b0c10;
-      color: white;
-    }
+body {
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+  background-color: #0b0c10;
+  color: white;
+}
+
+/* this gives your content nice margins */
+.main-content {
+  max-width: 1100px;   /* controls line width */
+  margin: 0 auto;      /* centers the block */
+  padding: 0 40px;     /* adds left/right margin like a page */
+  text-align: left;    /* keeps text aligned left */
+}
+
 
     header {
       text-align: center;
@@ -518,6 +527,7 @@
   </style>
 </head>
 <body>
+ <div class="main-content">
   <header>
     <h1>Real Estate Content Kit</h1>
     <p>Reels, Carousels, and Stories organized for your success</p>
@@ -527,52 +537,48 @@
   <section>
     <h2>First Time Buyer's Content Kit</h2>
 
-    <div class="subsection">
-      <h3>Reels</h3>
+   <section>
+      <h2>Reels</h2>
       <div class="card-container">
         <div class="card">
-          <img src="First time buyers.png" alt="Reel 1">
-          <h4>Reel 1</h4>
-          <p>Knowing this can save you thousands</p>
-          <button>View</button>
+          <img src="images/reel1.jpg" alt="Reel 1">
+          <h3>Reel Template 1</h3>
+          <a href="YOUR-LINK-HERE">Use Template</a>
         </div>
         <div class="card">
-          <img src="https://via.placeholder.com/220x300" alt="Reel 2">
-          <h4>Reel 2</h4>
-          <p>Trending content</p>
-          <button>View</button>
+          <img src="images/reel2.jpg" alt="Reel 2">
+          <h3>Reel Template 2</h3>
+          <a href="YOUR-LINK-HERE">Use Template</a>
         </div>
       </div>
-    </div>
+    </section>
 
-    <div class="subsection">
-      <h3>Carousels</h3>
+    <section>
+      <h2>Carousels</h2>
       <div class="card-container">
         <div class="card">
-          <img src="https://via.placeholder.com/220x300" alt="Carousel 1">
-          <h4>Carousel 1</h4>
-          <p>Swipe to learn</p>
-          <button>View</button>
+          <img src="images/carousel1.jpg" alt="Carousel 1">
+          <h3>Carousel Template 1</h3>
+          <a href="YOUR-LINK-HERE">Use Template</a>
+        </div>
+        <div class="card">
+          <img src="images/carousel2.jpg" alt="Carousel 2">
+          <h3>Carousel Template 2</h3>
+          <a href="YOUR-LINK-HERE">Use Template</a>
         </div>
       </div>
-    </div>
+    </section>
 
-    <div class="subsection">
-      <h3>Stories</h3>
+    <section>
+      <h2>Stories</h2>
       <div class="card-container">
         <div class="card">
-          <img src="https://via.placeholder.com/220x300" alt="Story 1">
-          <h4>Story 1</h4>
-          <p>Quick engagement</p>
-          <button>View</button>
+          <img src="images/story1.jpg" alt="Story 1">
+          <h3>Story Template 1</h3>
+          <a href="YOUR-LINK-HERE">Use Template</a>
         </div>
       </div>
-    </div>
-  </section>
-
-
-</body>
-</html>
-
+    </section>
+  </div>
 </body>
 </html>
