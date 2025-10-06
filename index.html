@@ -127,10 +127,11 @@ body {
 
 /* now start hero properly */
 .hero {
-  min-height: 300px; /* adjust height */
-  background-image: url("Header image.jpeg"); /* your image file */
-  background-size: cover;   /* makes it cover the whole area */
-  background-position: center; /* centers the image */
+  height: 300px; /* Adjust the height you want for the header */
+  background-image: url("Header image.jpeg"); /* Your header image */
+  background-size: cover;   /* Fill the hero area only */
+  background-position: center top; /* Keep image at the top */
+  background-repeat: no-repeat;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -148,7 +149,7 @@ body {
 
 .hero-text {
   position: relative;
-  z-index: 1; /* makes sure text stays above overlay */
+  z-index: 1; /* ensures text stays above overlay */
 }
 
 .hero h1 {
@@ -159,6 +160,7 @@ body {
 .hero p {
   font-size: 1.2rem;
 }
+
       /* Sidebar container */
 .sidebar {
   height: 100%;
