@@ -249,17 +249,6 @@ body {
   </style>
 </head>
 </header>
-<script>
-function openNav() {
-  document.getElementById("sidebar").style.width = "250px";
-}
-
-function closeNav() {
-  document.getElementById("sidebar").style.width = "0";
-}
-</script>
-<!-- Sidebar toggle button -->
-<span class="openbtn" onclick="openNav()">&#9776; Categories</span>
 <body>
      <!-- Sidebar -->
 <div id="sidebar" class="sidebar">
@@ -269,14 +258,17 @@ function closeNav() {
   <a href="#Sellers">Sellers</a>
   <a href="#Neighborhood/ Events">Neighborhood/Events</a>
 </div>
+  <!-- Open button -->
+<button class="openbtn" onclick="openNav()">☰ Open Sidebar</button>  
  <header class="hero">
   <div class="hero-text">
     <h1>Ravierra.Co Templates</h1>
     <p>Reels, Carousels, and Stories organized for your success</p>
   </div>
+ 
 
        <!-- Main content -->
-  <main>
+  <manin>
     <!-- Netflix-style horizontal scroll section -->
     <section class="assortment">
       <h2>Explore Content</h2>
@@ -703,5 +695,15 @@ function closeNav() {
       </div>
     </section>
   </div>
+    <script>
+  function openNav() {
+    document.getElementById("mySidebar").style.width = "250px";
+  }
+
+  function closeNav() {
+    document.getElementById("mySidebar").style.width = "0";
+  }
+</script>
+
 </body>
 </html>
