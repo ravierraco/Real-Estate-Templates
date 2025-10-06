@@ -205,28 +205,34 @@ body {
   padding: 10px 15px;
   border: none;
 }
-.scroll-row {
-  display: flex;            /* puts cards in a row */
-  gap: 15px;                /* space between cards */
-  overflow-x: auto;         /* enable horizontal scroll */
-  overflow-y: hidden;       /* no vertical scroll */
-  padding-bottom: 10px;
-  scrollbar-width: none;    /* hide Firefox scrollbar */
+.scroll-container {
+  display: flex;
+  overflow-x: auto;
+  gap: 16px;
+  padding: 10px;
+  scroll-behavior: smooth;
 }
 
-.scroll-row::-webkit-scrollbar {
-  display: none;            /* hide Chrome/Safari scrollbar */
+.scroll-container::-webkit-scrollbar {
+  height: 8px;
+}
+
+.scroll-container::-webkit-scrollbar-thumb {
+  background: #ccc;
+  border-radius: 4px;
 }
 
 .card {
-  min-width: 200px;         /* fixed card width so they overflow horizontally */
-  flex: 0 0 auto;           /* prevents shrinking */
-  background: #fff;
-  border-radius: 10px;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  flex: 0 0 auto;
+  width: 200px;
   text-align: center;
-  padding: 10px;
 }
+
+.card img {
+  width: 100%;
+  border-radius: 12px;
+}
+
 
 .card img {
   width: 100%;
