@@ -126,12 +126,13 @@ body {
 }
 
 /* now start hero properly */
+/* HERO IMAGE */
 .hero {
-  height: 300px; /* Adjust the height you want for the header */
-  background-image: url("Header image.jpeg"); /* Your header image */
-  background-size: cover;   /* Fill the hero area only */
-  background-position: center top; /* Keep image at the top */
+  background-image: url('Header image.jpeg');
+  background-size: cover;
+  background-position: center;
   background-repeat: no-repeat;
+  height: 400px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -144,21 +145,38 @@ body {
   content: "";
   position: absolute;
   top: 0; left: 0; right: 0; bottom: 0;
-  background-color: rgba(0,0,0,0.4); /* dark overlay for text readability */
+  background-color: rgba(0,0,0,0.4);
 }
 
 .hero-text {
   position: relative;
-  z-index: 1; /* ensures text stays above overlay */
+  z-index: 1;
 }
 
-.hero h1 {
-  font-size: 2.5rem;
+.hero-text h1 {
+  font-size: 3rem;
   margin: 0;
 }
 
-.hero p {
-  font-size: 1.2rem;
+.hero-text p {
+  font-size: 1.3rem;
+  margin-top: 10px;
+}
+
+/* MAKE SPACE BETWEEN HERO AND NEXT SECTION */
+.scroll-section {
+  background-color: #0b2b26;
+  padding: 50px 20px;
+  margin-top: 0; /* don’t overlap */
+}
+
+/* SCROLL CONTAINER */
+.scroll-container {
+  display: flex;
+  overflow-x: auto;
+  gap: 16px;
+  padding: 10px;
+  scroll-behavior: smooth;
 }
 
       /* Sidebar container */
@@ -206,50 +224,6 @@ body {
   color: white;
   padding: 10px 15px;
   border: none;
-}
-.scroll-container {
-  display: flex;
-  overflow-x: auto;
-  gap: 16px;
-  padding: 10px;
-  scroll-behavior: smooth;
-}
-
-.scroll-container::-webkit-scrollbar {
-  height: 8px;
-}
-
-.scroll-container::-webkit-scrollbar-thumb {
-  background: #ccc;
-  border-radius: 4px;
-}
-
-.card {
-  flex: 0 0 auto;
-  width: 200px;
-  text-align: center;
-}
-
-.card img {
-  width: 100%;
-  border-radius: 12px;
-}
-
-
-.card img {
-  width: 100%;
-  border-radius: 8px;
-}
-
-.card .btn {
-  display: block;
-  margin: 10px auto 0 auto;
-  background: #e75480;
-  color: #fff;
-  padding: 8px 14px;
-  border-radius: 20px;
-  text-decoration: none;
-  font-weight: bold;
 }
 
     }
