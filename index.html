@@ -1,151 +1,36 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Real Estate Templates</title>
-  <style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ravierra.Co Templates</title>
+
+<style>
 body {
   margin: 0;
-  padding: 0;
-  font-family:Cryillic Bodoni Condensed, questrial;
+  font-family: 'Questrial', sans-serif;
   background-color: #0b2b26;
   color: white;
 }
 
-/* this gives your content nice margins */
-.main-content {
-  max-width: 1100px;   /* controls line width */
-  margin: 0 auto;      /* centers the block */
-  padding: 0 40px;     /* adds left/right margin like a page */
-  text-align: left;    /* keeps text aligned left */
-}
-
-
-    header {
-      text-align: center;
-      padding: 40px 20px;
-    }
-
-    header h1 {
-      font-size: 6.0rem;
-      font-weight: 900;
-      margin-bottom: 10px;
-    }
-
-    header p {
-      font-size: 1.75rem;
-      color: #aaa;
-    }
-
-    section {
-      margin: 40px 20px;
-    }
-
-    section h2 {
-      font-size: 3.0rem;
-      font-weight: 800;
-      margin-bottom: 20px;
-      border-bottom: 2px solid #fffef1;
-      display: inline-block;
-      padding-bottom: 5px;
-    }
-
-    .subsection {
-      margin-top: 25px;
-    }
-
-    .subsection h3 {
-      font-size: 1.3rem;
-      font-weight: 700;
-      margin-bottom: 15px;
-      color: #fffef1;
-    }
-
-    .card-container {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 20px;
-      justify-content: flex-start;
-    }
-
-    .card {
-      background-color: #1c1c1c;
-      border-radius: 12px;
-      width: 220px;
-      overflow: hidden;
-      box-shadow: 0 6px 15px rgba(0,0,0,0.4);
-      transition: transform 0.2s;
-    }
-
-    .card:hover {
-      transform: scale(1.05);
-    }
-
-    .card img {
-      width: 100%;
-      height: 300px;
-      object-fit: cover;
-    }
-
-    .card h4 {
-      margin: 15px 0 10px;
-      font-size: 1.1rem;
-      font-weight: 700;
-      text-align: center;
-    }
-
-    .card p {
-      margin: 0 0 15px;
-      font-size: 0.9rem;
-      color: #ccc;
-      text-align: center;
-    }
-
-    .card button {
-      margin: 0 auto 20px;
-      display: block;
-      padding: 10px 15px;
-      border: none;
-      border-radius: 6px;
-      background: #1db954;
-      color: white;
-      font-weight: bold;
-      cursor: pointer;
-      transition: background 0.3s;
-    }
-   .logo {
-  width: 140px;   
-  height: auto;
-  display: block;
-  margin: 0 auto 20px auto;
-}
-
-.card button:hover {
-  background: #fc83cb;
-}
-
-/* now start hero properly */
-/* HERO IMAGE */
+/* HERO */
 .hero {
-  background-image: url('Header image.jpeg');
+  background-image: url('header-image.jpeg');
   background-size: cover;
   background-position: center;
-  background-repeat: no-repeat;
   height: 600px;
+  position: relative;
   display: flex;
   align-items: center;
   justify-content: center;
   text-align: center;
-  color: white;
-  position: relative;
 }
 
 .hero::after {
   content: "";
   position: absolute;
   top: 0; left: 0; right: 0; bottom: 0;
-  background-color: rgba(0,0,0,0.4);
+  background-color: rgba(0,0,0,0.5);
 }
 
 .hero-text {
@@ -163,26 +48,10 @@ body {
   margin-top: 10px;
 }
 
-/* MAKE SPACE BETWEEN HERO AND NEXT SECTION */
-.scroll-section {
-  background-color: #0b2b26;
-  padding: 50px 20px;
-  margin-top: 0; /* don’t overlap */
-}
-
-/* SCROLL CONTAINER */
-.scroll-container {
-  display: flex;
-  overflow-x: auto;
-  gap: 16px;
-  padding: 10px;
-  scroll-behavior: smooth;
-}
-
-      /* Sidebar container */
+/* SIDEBAR */
 .sidebar {
   height: 100%;
-  width: 0; /* hidden by default */
+  width: 0;
   position: fixed;
   top: 0;
   left: 0;
@@ -190,12 +59,11 @@ body {
   overflow-x: hidden;
   transition: 0.3s;
   padding-top: 60px;
-  z-index: 1000;
+  z-index: 2000;
 }
 
-/* Sidebar links */
 .sidebar a {
-  padding: 8px 8px 8px 32px;
+  padding: 10px 32px;
   text-decoration: none;
   font-size: 18px;
   color: #f1f1f1;
@@ -207,80 +75,196 @@ body {
   background-color: #575757;
 }
 
-/* Close button */
 .sidebar .closebtn {
   position: absolute;
   top: 20px;
   right: 25px;
   font-size: 36px;
-  margin-left: 50px;
 }
 
-/* Open button */
+/* OPEN BUTTON */
 .openbtn {
-  font-size: 20px;
-  cursor: pointer;
-  background-color: #111;
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  background-color: rgba(0,0,0,0.6);
   color: white;
-  padding: 10px 15px;
   border: none;
+  font-size: 18px;
+  padding: 10px 15px;
+  cursor: pointer;
+  z-index: 3000;
+  border-radius: 5px;
 }
 
-    }
-  </style>
+.openbtn:hover {
+  background-color: #e75480;
+}
+
+/* MAIN SECTION LAYOUTS */
+.section {
+  display: none; /* hide all by default */
+  padding: 50px 20px;
+}
+
+.section.active {
+  display: block; /* show only active section */
+}
+
+.scroll-container {
+  display: flex;
+  overflow-x: auto;
+  gap: 16px;
+  padding: 10px;
+  scroll-behavior: smooth;
+}
+
+.scroll-container::-webkit-scrollbar {
+  height: 8px;
+}
+
+.scroll-container::-webkit-scrollbar-thumb {
+  background: #ccc;
+  border-radius: 4px;
+}
+
+/* CARD */
+.card {
+  flex: 0 0 auto;
+  width: 200px;
+  background-color: #1c1c1c;
+  border-radius: 12px;
+  box-shadow: 0 6px 15px rgba(0,0,0,0.4);
+  transition: transform 0.2s;
+  text-align: center;
+}
+
+.card img {
+  width: 100%;
+  border-radius: 12px 12px 0 0;
+}
+
+.card:hover {
+  transform: scale(1.05);
+}
+
+.card h4 {
+  margin: 10px 0;
+}
+
+.card .btn {
+  display: block;
+  margin: 10px auto 15px auto;
+  background: #e75480;
+  color: #fff;
+  padding: 8px 14px;
+  border-radius: 20px;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+/* NEWSLETTER */
+.newsletter {
+  text-align: center;
+  background-color: #132f2a;
+  padding: 60px 20px;
+}
+
+.newsletter h3 {
+  font-size: 2rem;
+  margin-bottom: 10px;
+}
+
+.newsletter p {
+  font-size: 1.1rem;
+  margin-bottom: 20px;
+}
+
+.newsletter input[type="email"] {
+  padding: 10px;
+  width: 280px;
+  border-radius: 5px;
+  border: none;
+  margin-right: 10px;
+}
+
+.newsletter button {
+  background: #e75480;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.newsletter button:hover {
+  background: #c7436f;
+}
+</style>
 </head>
 </header>
 <body>
-     <!-- Sidebar -->
-<div id="sidebar" class="sidebar">
+  <!-- SIDEBAR -->
+<div id="mySidebar" class="sidebar">
   <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-  <h3>Categories</h3>
-  <a href="#First Time Buyers">First Time Buyers</a>
-  <a href="#Sellers">Sellers</a>
-  <a href="#Neighborhood/ Events">Neighborhood/Events</a>
+  <a href="#" onclick="showSection('home')">Home</a>
+  <a href="#" onclick="showSection('First Time Buyer's Content Kit')">First Time Buyer's Content Kit</a>
+  <a href="#" onclick="showSection('Neighborhood/Events Content Kit')">Neighborhood/Events Content Kit</a>
+  <a href="#" onclick="showSection('Sellers Content kit')">Sellers Cotent Kit</a>
 </div>
-  <!-- Open button -->
-<button class="openbtn" onclick="openNav()">☰ Content</button>  
- <header class="hero">
+<!-- HERO -->
+<header class="hero" id="home">
+  <button class="openbtn" onclick="openNav()">☰ Content</button>
   <div class="hero-text">
-    <h1>Ravierra.Co Templates</h1>
-    <p>Reels, Carousels, and Stories organized for your success</p>
+    <h1>Ravierra.Co</h1>
+    <p>Templates organized for your success</p>
   </div>
- </header>
+</header>
 
-       <!-- Main content -->
-  <manin>
-    <!-- Netflix-style horizontal scroll section -->
-    <section class="assortment">
-      <h2>Explore Content</h2>
-      <div class="scroll-row">
-        <!-- Your cards go here -->
-        <div class="scroll-container" style="display:flex;overflow-x:auto;gap:16px;">
 
-        <div class="card">
-          <img src="Emotional Rollercoatser Of Buying Your First Home.png" alt="Reel Template">
-          <a href="#First Time Buyers" class="btn">Use Template</a>
-        </div>
-        <div class="card">
-          <img src="Pre Approved.png" alt="Carousel Template">
-          <a href="#First Time Buyers" class="btn">Use Template</a>
-        </div>
-         <div class="card">
-          <img src="What are your thoughts.png" alt="Reel Template">
-          <a href="#First Time Buyers" class="btn">Use Template</a>
-        </div>
-         <div class="card">
-          <img src="[City] in 3 words.png" alt="Reel Template">
-          <a href="#First Time Buyers" class="btn">Use Template</a>
-        </div>
-        <div class="card">
-          <img src="REALITY OF SELLING YOUR HOME.png" alt="Reel Template">
-          <a href="#First Time Buyers" class="btn">Use Template</a>
-        </div>
-        <!-- add more cards -->
+<!-- HOME PAGE CONTENT -->
+<section id="home-section" class="section active">
+  <div class="scroll-section">
+    <h2>Featured Templates</h2>
+    <div class="scroll-container">
+      <div class="card">
+        <img src="headache.png" alt="Template 1">
+        <h4>Reel Template</h4>
+        <a href="#First Time Buyer's Content Kit" class="btn">Use Template</a>
       </div>
-    </section>
-  </main>
+      <div class="card">
+        <img src="Second POV.png" alt="Template 2">
+        <h4>Reel Template</h4>
+        <a href="#First Time Buyer's Content Kit" class="btn">Use Template</a>
+      </div>
+      <div class="card">
+        <img src="You can get all this for [price].png" alt="Template 2">
+        <h4>Reel Template</h4>
+        <a href="#Neighborhood/Events Content Kit" class="btn">Use Template</a>
+      </div>
+      <div class="card">
+        <img src="EVENTS IN [CITY] THIS MONTH.png" alt="Template 2">
+        <h4>Carousel Template</h4>
+        <a href="#Neighborhood/Events Content Kit" class="btn">Use Template</a>
+      </div>
+      <div class="card">
+        <img src="my new favvv spot.png" alt="Template 2">
+        <h4>Reel Template</h4>
+        <a href="#Neighborhood/Events Content Kit" class="btn">Use Template</a>
+      </div>
+    </div>
+  </div>
+
+  <section id="newsletter" class="newsletter">
+    <h3>Join Our Newsletter</h3>
+    <p>Stay updated with new templates and resources!</p>
+    <form>
+      <input type="email" placeholder="Enter your email" required>
+      <button type="submit">Subscribe</button>
+    </form>
+  </section>
+</section>
+
 
 
   <!-- Content Kit 1 -->
