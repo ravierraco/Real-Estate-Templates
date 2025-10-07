@@ -258,6 +258,28 @@
   </main>
 
   <script src="script.js"></script>
+  
+<script>
+function openNav() {
+  document.getElementById("mySidebar").style.width = "250px";
+}
+
+function closeNav() {
+  document.getElementById("mySidebar").style.width = "0";
+}
+
+function showSection(section) {
+  // hide all
+  document.querySelectorAll('.section').forEach(sec => sec.classList.remove('active'));
+  // show only chosen one
+  if (section === 'home') {
+    document.getElementById('home-section').classList.add('active');
+  } else {
+    document.getElementById(section + '-section').classList.add('active');
+  }
+  closeNav(); // auto close sidebar after click
+}
+</script>
 </body>
 </html>
 
