@@ -212,14 +212,20 @@ body {
 </head>
 </header>
 <body>
-  <!-- SIDEBAR -->
-<div id="mySidebar" class="sidebar">
-  <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-  <a href="#" onclick="showSection('home')">Home</a>
-  <a href="#" onclick="showSection('First Time Buyer's Content Kit')">First Time Buyer's Content Kit</a>
-  <a href="#" onclick="showSection('Neighborhood/Events Content Kit')">Neighborhood/Events Content Kit</a>
-  <a href="#" onclick="showSection('Sellers Content kit')">Sellers Cotent Kit</a>
+<!-- Sidebar (same on every page) -->
+<div id="sidebar" class="sidebar">
+  <button class="close-btn" onclick="closeSidebar()" aria-label="Close sidebar">×</button>
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="first-time-buyers.html">First-Time Buyers</a>
+    <a href="neighborhood.html">Neighborhood & Events</a>
+    <a href="sellers.html">Sellers</a>
+  </nav>
 </div>
+
+<!-- Open button (place inside header so it overlays the hero) -->
+<button class="open-btn" onclick="openSidebar()" aria-label="Open content">☰ Content</button>
+
 <!-- HERO -->
 <header class="hero" id="home">
   <button class="openbtn" onclick="openNav()">☰ Content</button>
