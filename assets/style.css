@@ -8,7 +8,7 @@
 body {
   margin: 0;
   padding: 0;
-  font-family: "Questrial", "Cyrillic Bodoni Condensed", sans-serif;
+  font-family: "Cyrillic Bodoni Condensed", "Questrial";
   background-color: #0b2b26;
   color: #ffffff;
   overflow-x: hidden;
@@ -103,7 +103,7 @@ body {
 }
 
 .sidebar a:hover {
-  background-color: #1db954;
+  background-color: #a80856;
   color: #fff;
 }
 
@@ -140,7 +140,7 @@ body {
 }
 
 .open-btn:hover {
-  background-color: #1db954;
+  background-color: #a80856;
 }
 
 /* ========================================
@@ -205,7 +205,7 @@ body {
   display: inline-block;
   margin: 0 auto 20px auto;
   padding: 10px 18px;
-  background: #1db954;
+  background: #a80856;
   color: #fff;
   border: none;
   border-radius: 6px;
@@ -252,7 +252,7 @@ body {
   text-align: center;
   background-color: #132e2a;
   padding: 60px 20px;
-  border-top: 2px solid #1db954;
+  border-top: 2px solid #a80856;
 }
 
 .newsletter h2 {
@@ -281,7 +281,7 @@ body {
   padding: 10px 18px;
   border: none;
   border-radius: 6px;
-  background: #1db954;
+  background: #a80856;
   color: #fff;
   font-weight: bold;
   cursor: pointer;
