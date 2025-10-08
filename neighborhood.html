@@ -14,12 +14,19 @@
     </div>
   </header>
 
-  <div id="sidebar" class="sidebar">
-    <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">×</a>
+<!-- Sidebar (same on every page) -->
+<div id="sidebar" class="sidebar">
+  <button class="close-btn" onclick="closeSidebar()" aria-label="Close sidebar">×</button>
+  <nav>
     <a href="index.html">Home</a>
-    <a href="neighborhood-events.html">Neighborhood & Events</a>
+    <a href="first-time-buyers.html">First-Time Buyers</a>
+    <a href="neighborhood.html">Neighborhood & Events</a>
     <a href="sellers.html">Sellers</a>
-  </div>
+  </nav>
+</div>
+
+<!-- Open button (place inside header so it overlays the hero) -->
+<button class="open-btn" onclick="openSidebar()" aria-label="Open content">☰ Content</button>
 
   <main class="main-content">
     <section>
