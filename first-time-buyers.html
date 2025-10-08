@@ -4,22 +4,30 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>First-Time Buyers | Ravierra.Co</title>
-  <link rel="stylesheet" href="style.css" />
+ <link rel="stylesheet" href="assets/style.css">
+
 </head>
 <body>
+  <!-- Sidebar -->
+<div id="sidebar" class="sidebar">
+  <button class="close-btn" onclick="closeSidebar()">×</button>
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="first-time-buyers.html">First-Time Buyers</a>
+    <a href="neighborhood.html">Neighborhood & Events</a>
+    <a href="sellers.html">Sellers</a>
+  </nav>
+</div>
+
+<!-- Open Sidebar Button -->
+<button class="open-btn" onclick="openSidebar()">☰ Content</button>
+
   <header class="hero">
     <button class="openbtn" onclick="openNav()">☰ Content</button>
     <div class="hero-text">
       <h1>First-Time Buyers</h1>
     </div>
   </header>
-
-  <div id="sidebar" class="sidebar">
-    <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">×</a>
-    <a href="index.html">Home</a>
-    <a href="neighborhood-events.html">Neighborhood & Events</a>
-    <a href="sellers.html">Sellers</a>
-  </div>
 
   <main class="main-content">
     <section>
