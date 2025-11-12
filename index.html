@@ -4,11 +4,355 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Ravierra.Co Templates</title>
-<link rel="stylesheet" href="assets/style.css">
+<style>
+  body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Bodoni Moda', 'Questrial', serif;
+    background-color: #032b22;
+    color: white;
+  }
+
+  .main-content {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 40px;
+  }
+
+  .hero {
+    position: relative;
+    text-align: center;
+    color: white;
+    margin-bottom: 40px;
+  }
+
+  .hero-img {
+    width: 100%;
+    height: 400px;
+    object-fit: cover;
+    filter: brightness(0.7);
+  }
+
+  .hero-text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 10;
+  }
+
+  .hero-text h1 {
+    font-size: 4rem;
+    margin: 0;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.8);
+  }
+
+  .hero-text p {
+    font-size: 1.5rem;
+    margin: 10px 0 0;
+    text-shadow: 1px 1px 3px rgba(0,0,0,0.8);
+  }
+
+  /* Sidebar Styles */
+  .sidebar {
+    height: 100%;
+    width: 0;
+    position: fixed;
+    z-index: 1000;
+    top: 0;
+    left: 0;
+    background-color: #111;
+    overflow-x: hidden;
+    transition: 0.3s;
+    padding-top: 60px;
+  }
+
+  .sidebar a {
+    padding: 15px 30px;
+    text-decoration: none;
+    font-size: 1.2rem;
+    color: white;
+    display: block;
+    transition: 0.3s;
+  }
+
+  .sidebar a:hover {
+    background-color: #e75480;
+  }
+
+  .sidebar .close-btn {
+    position: absolute;
+    top: 10px;
+    right: 25px;
+    font-size: 36px;
+    background: none;
+    border: none;
+    color: white;
+    cursor: pointer;
+  }
+
+  .open-btn {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    z-index: 999;
+    font-size: 20px;
+    cursor: pointer;
+    background-color: #e75480;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+  }
+
+  /* Modal Styles */
+  .modal {
+    display: none;
+    position: fixed;
+    z-index: 2000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0,0,0,0.8);
+  }
+
+  .modal-content {
+    background-color: #1c1c1c;
+    margin: 5% auto;
+    padding: 30px;
+    border-radius: 12px;
+    width: 85%;
+    max-width: 900px;
+    display: flex;
+    gap: 30px;
+    align-items: flex-start;
+    position: relative;
+  }
+
+  .modal-close {
+    color: #aaa;
+    position: absolute;
+    top: 15px;
+    right: 20px;
+    font-size: 32px;
+    font-weight: bold;
+    cursor: pointer;
+    z-index: 10;
+  }
+
+  .modal-close:hover {
+    color: white;
+  }
+
+  .modal-image {
+    width: 300px;
+    height: auto;
+    border-radius: 8px;
+    flex-shrink: 0;
+  }
+
+  .modal-body {
+    flex: 1;
+    padding-top: 10px;
+  }
+
+  .modal-body h3 {
+    color: #fffef1;
+    margin-bottom: 15px;
+    font-size: 1.8rem;
+  }
+
+  .modal-body p {
+    color: #ccc;
+    line-height: 1.6;
+    margin-bottom: 20px;
+    white-space: pre-line;
+  }
+
+  .modal-btn {
+    display: inline-block;
+    background: #e75480;
+    color: white;
+    padding: 12px 24px;
+    text-decoration: none;
+    border-radius: 24px;
+    font-weight: 700;
+    margin-top: 15px;
+  }
+
+  .modal-btn:hover {
+    background: #d34672;
+  }
+
+  @media (max-width: 768px) {
+    .modal-content {
+      flex-direction: column;
+      width: 90%;
+    }
+
+    .modal-image {
+      width: 100%;
+    }
+  }
+
+  /* Section Styles */
+  .section {
+    margin: 40px 0;
+  }
+
+  .section h2 {
+    font-size: 3rem;
+    font-weight: 800;
+    margin-bottom: 30px;
+    text-align: center;
+  }
+
+  .scroll-container {
+    display: flex;
+    gap: 20px;
+    overflow-x: auto;
+    padding: 20px 0;
+    scroll-behavior: smooth;
+  }
+
+  .scroll-container::-webkit-scrollbar {
+    height: 8px;
+  }
+
+  .scroll-container::-webkit-scrollbar-track {
+    background: #1c1c1c;
+    border-radius: 4px;
+  }
+
+  .scroll-container::-webkit-scrollbar-thumb {
+    background: #e75480;
+    border-radius: 4px;
+  }
+
+  .card {
+    background-color: #1c1c1c;
+    border-radius: 12px;
+    min-width: 250px;
+    overflow: hidden;
+    box-shadow: 0 6px 15px rgba(0,0,0,0.4);
+    transition: all 0.3s ease;
+    position: relative;
+    cursor: pointer;
+    flex-shrink: 0;
+  }
+
+  .card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, #ec4899 0%, #ef4444 100%);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    z-index: 0;
+  }
+
+  .card:hover::before {
+    opacity: 1;
+  }
+
+  .card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 12px 24px rgba(236, 72, 153, 0.3);
+  }
+
+  .card img {
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+    position: relative;
+    z-index: 1;
+    transition: transform 0.3s ease;
+  }
+
+  .card:hover img {
+    transform: scale(1.05);
+  }
+
+  .card h4 {
+    margin: 15px 10px 10px;
+    font-size: 1.1rem;
+    font-weight: 700;
+    text-align: center;
+    color: white;
+    position: relative;
+    z-index: 1;
+    transition: color 0.3s ease;
+  }
+
+  .card .btn {
+    display: block;
+    background: #e75480;
+    color: #ffffff;
+    padding: 10px 16px;
+    text-decoration: none;
+    border-radius: 24px;
+    font-weight: 700;
+    text-align: center;
+    width: fit-content;
+    margin: 0 auto 20px;
+    position: relative;
+    z-index: 2;
+    transition: all 0.3s ease;
+  }
+
+  .card:hover .btn {
+    background: white;
+    color: #ec4899;
+  }
+
+  /* Newsletter Section */
+  .newsletter {
+    background-color: #1c1c1c;
+    border-radius: 12px;
+    padding: 40px;
+    margin: 60px 0;
+    text-align: center;
+  }
+
+  .newsletter h3 {
+    color: #fffef1;
+    font-size: 2.5rem;
+    margin-bottom: 15px;
+  }
+
+  .newsletter p {
+    font-size: 1.2rem;
+    color: #ccc;
+    margin-bottom: 30px;
+  }
+
+  @media (max-width: 768px) {
+    .hero-text h1 {
+      font-size: 2.5rem;
+    }
+
+    .section h2 {
+      font-size: 2rem;
+    }
+
+    .card {
+      min-width: 200px;
+    }
+
+    .main-content {
+      padding: 0 20px;
+    }
+  }
+</style>
 </head>
-</header>
 <body>
-<!-- Sidebar (same on every page) -->
+
+<!-- Sidebar -->
 <div id="sidebar" class="sidebar">
   <button class="close-btn" onclick="closeSidebar()" aria-label="Close sidebar">×</button>
   <nav>
@@ -21,18 +365,10 @@
   </nav>
 </div>
 
-<!-- Open button (place inside header so it overlays the hero) -->
+<!-- Open Sidebar Button -->
 <button class="open-btn" onclick="openSidebar()" aria-label="Open content">☰ Content</button>
 
-<!-- HERO -->
-<header class="hero">
-  <img src="assets/Header.jpeg" alt="Ravierra.Co Header" class="hero-img">
-  <div class="hero-text">
-    <h1>Ravierra.Co</h1>
-    <p>Templates organized for success</p>
-  </div>
-</header>
-  <!-- MODAL (Add this RIGHT AFTER your closing </header> tag) -->
+<!-- MODAL -->
 <div id="templateModal" class="modal">
   <div class="modal-content">
     <span class="modal-close" onclick="closeModal()">&times;</span>
@@ -44,51 +380,123 @@
     </div>
   </div>
 </div>
- 
 
-<!-- HOME PAGE CONTENT -->
-<section id="home-section" class="section active">
-  <div class="scroll-section">
+<!-- HERO -->
+<header class="hero">
+  <img src="https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=1200&h=400&fit=crop" alt="Ravierra.Co Header" class="hero-img">
+  <div class="hero-text">
+    <h1>Ravierra.Co</h1>
+    <p>Templates organized for success</p>
+  </div>
+</header>
+
+<div class="main-content">
+  <!-- HOME PAGE CONTENT -->
+  <section id="home-section" class="section active">
     <h2>Featured Templates</h2>
     <div class="scroll-container">
-      <div class="card">
-        <img src="headache.png" alt="Template 1">
+      <div class="card" onclick="openModal('https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=400&h=600&fit=crop', 'Headache Relief Reel', 'Comment \'RELIEF\' ↓ for the complete first-time buyer guide\n\nThat moment when you realize buying a home doesn\'t have to be a headache 😌 With the right agent and preparation, the process can actually be smooth.\n\nThis is your sign to:\n→ Get pre-approved first\n→ Know your must-haves vs nice-to-haves\n→ Work with someone who explains everything\n→ Take your time - don\'t rush\n\nWho else thought buying would be way more stressful? 🙋‍♀️\n\n#firsttimehomebuyer #homebuyingtips #realestatetips #homebuying101', 'https://www.canva.com')">
+        <img src="https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=400&h=600&fit=crop" alt="Template 1">
         <h4>Reel Template</h4>
-        <a href="#First Time Buyer's Content Kit" class="btn">Use Template</a>
+        <a href="#" class="btn" onclick="event.stopPropagation();">Use Template</a>
       </div>
-      <div class="card">
-        <img src="Second POV.png" alt="Template 2">
+      
+      <div class="card" onclick="openModal('https://images.unsplash.com/photo-1582407947304-fd86f028f716?w=400&h=600&fit=crop', 'Second POV Reel', 'Comment \'POV\' ↓ for more perspective content\n\nPOV: You\'re seeing homes from a different angle 👀 Sometimes all it takes is a fresh perspective to find your dream home.\n\n#realestate #homebuying #pov #perspective', 'https://www.canva.com')">
+        <img src="https://images.unsplash.com/photo-1582407947304-fd86f028f716?w=400&h=600&fit=crop" alt="Template 2">
         <h4>Reel Template</h4>
-        <a href="#First Time Buyer's Content Kit" class="btn">Use Template</a>
+        <a href="#" class="btn" onclick="event.stopPropagation();">Use Template</a>
       </div>
-      <div class="card">
-        <img src="You can get all this for [price].png" alt="Template 2">
+      
+      <div class="card" onclick="openModal('https://images.unsplash.com/photo-1512917774080-9991f1c4c750?w=400&h=600&fit=crop', 'Price Reveal Reel', 'Comment \'PRICE\' ↓ for the full breakdown\n\nYou can get all this for [price]! 🏡 Location, space, and style - all within your budget.\n\n#affordablehomes #realestate #homevalue', 'https://www.canva.com')">
+        <img src="https://images.unsplash.com/photo-1512917774080-9991f1c4c750?w=400&h=600&fit=crop" alt="Template 3">
         <h4>Reel Template</h4>
-        <a href="#Neighborhood/Events Content Kit" class="btn">Use Template</a>
+        <a href="#" class="btn" onclick="event.stopPropagation();">Use Template</a>
       </div>
-      <div class="card">
-        <img src="EVENTS IN [CITY] THIS MONTH.png" alt="Template 2">
+      
+      <div class="card" onclick="openModal('https://images.unsplash.com/photo-1449844908441-8829872d2607?w=400&h=600&fit=crop', 'City Events Carousel', 'Comment \'EVENTS\' ↓ for the complete guide\n\nEVENTS IN [CITY] THIS MONTH 📍\n\nDiscover what makes this city special:\n→ Weekend markets\n→ Live music venues\n→ Family-friendly activities\n→ Local favorites\n\n#cityguide #localevents #community', 'https://www.canva.com')">
+        <img src="https://images.unsplash.com/photo-1449844908441-8829872d2607?w=400&h=600&fit=crop" alt="Template 4">
         <h4>Carousel Template</h4>
-        <a href="#Neighborhood/Events Content Kit" class="btn">Use Template</a>
+        <a href="#" class="btn" onclick="event.stopPropagation();">Use Template</a>
       </div>
-      <div class="card">
-        <img src="my new favvv spot.png" alt="Template 2">
+      
+      <div class="card" onclick="openModal('https://images.unsplash.com/photo-1555396273-367ea4eb4db5?w=400&h=600&fit=crop', 'Favorite Spot Reel', 'Comment \'SPOT\' ↓ for more local recommendations\n\nMy new favvv spot in [city] ☕️ The vibes, the views, the community - everything about this place is *chef\'s kiss*\n\n#localspot #citylife #favorite', 'https://www.canva.com')">
+        <img src="https://images.unsplash.com/photo-1555396273-367ea4eb4db5?w=400&h=600&fit=crop" alt="Template 5">
         <h4>Reel Template</h4>
-        <a href="#Neighborhood/Events Content Kit" class="btn">Use Template</a>
+        <a href="#" class="btn" onclick="event.stopPropagation();">Use Template</a>
       </div>
     </div>
-  </div>
+  </section>
 
+  <!-- Newsletter Section -->
   <section id="newsletter" class="newsletter">
     <h3>Join Our Newsletter</h3>
     <p>Stay updated with new templates and resources!</p>
-    <!-- SendPulse Subscription Form -->
- <style >.sp-force-hide { display: none;}.sp-form[sp-id="249467"] { display: block; background: #ffffff; padding: 35px; width: 630px; max-width: 100%; border-radius: 24px; border-color: #dddddd; border-style: solid; border-width: 1px; font-family: "Times New Roman", Times, serif; background-repeat: no-repeat; background-position: center; background-size: auto;}.sp-form[sp-id="249467"] input[type="checkbox"] { display: inline-block; opacity: 1; visibility: visible;}.sp-form[sp-id="249467"] .sp-form-fields-wrapper { margin: 0 auto; width: 560px;}.sp-form[sp-id="249467"] .sp-form-control { background: #ffffff; border-color: #cccccc; border-style: solid; border-width: 1px; font-size: 15px; padding-left: 8.75px; padding-right: 8.75px; border-radius: 10px; height: 35px; width: 100%;}.sp-form[sp-id="249467"] .sp-field label { color: #444444; font-size: 13px; font-style: normal; font-weight: bold;}.sp-form[sp-id="249467"] .sp-button-messengers { border-radius: 10px;}.sp-form[sp-id="249467"] .sp-button { border-radius: 4px; background-color: #bf0076; color: #ffffff; width: auto; font-weight: 700; font-style: normal; font-family: Arial, sans-serif; box-shadow: inset 0 -2px 0 0 #820050;}.sp-form[sp-id="249467"] .sp-button-container { text-align: left;}</style><div class="sp-form-outer sp-force-hide"><div id="sp-form-249467" sp-id="249467" sp-hash="7b847da19c39f56eb348cdc362e5f58c0ad035b712a0946265cf39bb91727ec1" sp-lang="en" class="sp-form sp-form-regular sp-form-embed sp-form-horizontal" sp-show-options="%7B%22satellite%22%3Afalse%2C%22maDomain%22%3A%22login.sendpulse.com%22%2C%22formsDomain%22%3A%22forms.sendpulse.com%22%2C%22condition%22%3A%22onEnter%22%2C%22scrollTo%22%3A25%2C%22delay%22%3A10%2C%22repeat%22%3A3%2C%22background%22%3A%22rgba(0%2C%200%2C%200%2C%200.5)%22%2C%22position%22%3A%22bottom-right%22%2C%22animation%22%3A%22%22%2C%22hideOnMobile%22%3Afalse%2C%22submitRedirectUrl%22%3A%22%22%2C%22urlFilter%22%3Afalse%2C%22urlFilterConditions%22%3A%5B%7B%22force%22%3A%22hide%22%2C%22clause%22%3A%22contains%22%2C%22token%22%3A%22%22%7D%5D%2C%22analytics%22%3A%7B%22ga%22%3A%7B%22eventLabel%22%3Anull%2C%22send%22%3Afalse%7D%7D%2C%22utmEnable%22%3Afalse%7D"><div class="sp-form-fields-wrapper"><div class="sp-message"><div></div></div><form novalidate="" class="sp-element-container sp-lg"><div class="sp-field sp-field-full-width" sp-id="sp-a15efa01-b3bc-4d7c-93a1-ff23826871eb"><div style="font-family: inherit; line-height: 1.2;"><p>Get Access To A Free Week of Content</p></div></div><div class="sp-field " sp-id="sp-04635a7a-160c-441e-9536-34526b578feb"><div class="sp-checkbox-option"><label><input type="checkbox" sp-type="gdprConfirm" name="sform[Z2RwckNvbmZpcm0=]" value="yes" sp-tips="%7B%22required%22%3A%22Required%20field%22%7D" class=" " required="required"><span >Yes, please keep me updated on news, events and offers</span>&nbsp;<span ><strong>*</strong></span></label></div></div><div class="sp-field " sp-id="sp-ea0a36b1-8c23-47e1-a5c2-076c4df75177"><div class="sp-checkbox-option"><label><input type="checkbox" sp-type="gdprTerms" name="sform[Z2RwclRlcm1z]" value="yes" sp-tips="%7B%22required%22%3A%22Required%20field%22%7D" class=" " required="required"><span >By signing up, you agree to our <a href="" target="_blank">Terms of Use and Privacy Policy</a>, including the use of cookies and transfer of your personal information to </span>&nbsp;<span ><strong>*</strong></span></label></div></div><div class="sp-field " sp-id="sp-a9b937b3-2ae9-4bfd-9550-52ea9dc6ac56"><label class="sp-control-label"><span >Email</span><strong >*</strong></label><input type="email" sp-type="email" name="sform[email]" class="sp-form-control " placeholder="username@gmail.com" sp-tips="%7B%22required%22%3A%22Required%20field%22%2C%22wrong%22%3A%22Wrong%20email%22%7D" autocomplete="on" required="required"></div><div class="sp-field sp-button-container " sp-id="sp-d5755772-3a58-4386-a992-cd1879eaffcf"><button id="sp-d5755772-3a58-4386-a992-cd1879eaffcf" class="sp-button">Send Now </button></div></form><div class="sp-link-wrapper sp-brandname__left"><a class="sp-link " target="_blank" href="https://sendpulse.com/forms-powered-by-sendpulse?from=9224705"><span class="sp-link-img">&nbsp;</span><span translate="FORM.PROVIDED_BY">Provided by SendPulse</span></a></div></div></div></div><script type="text/javascript" async="async" src="//web.webformscr.com/apps/fc3/build/default-handler.js?1758181175060"></script> 
-<!-- /SendPulse Subscription Form -->
+    <style>.sp-force-hide { display: none;}.sp-form[sp-id="249467"] { display: block; background: #ffffff; padding: 35px; width: 630px; max-width: 100%; border-radius: 24px; border-color: #dddddd; border-style: solid; border-width: 1px; font-family: "Times New Roman", Times, serif; background-repeat: no-repeat; background-position: center; background-size: auto; margin: 0 auto;}.sp-form[sp-id="249467"] input[type="checkbox"] { display: inline-block; opacity: 1; visibility: visible;}.sp-form[sp-id="249467"] .sp-form-fields-wrapper { margin: 0 auto; width: 560px;}.sp-form[sp-id="249467"] .sp-form-control { background: #ffffff; border-color: #cccccc; border-style: solid; border-width: 1px; font-size: 15px; padding-left: 8.75px; padding-right: 8.75px; border-radius: 10px; height: 35px; width: 100%;}.sp-form[sp-id="249467"] .sp-field label { color: #444444; font-size: 13px; font-style: normal; font-weight: bold;}.sp-form[sp-id="249467"] .sp-button-messengers { border-radius: 10px;}.sp-form[sp-id="249467"] .sp-button { border-radius: 4px; background-color: #bf0076; color: #ffffff; width: auto; font-weight: 700; font-style: normal; font-family: Arial, sans-serif; box-shadow: inset 0 -2px 0 0 #820050;}.sp-form[sp-id="249467"] .sp-button-container { text-align: left;}</style>
+    <div class="sp-form-outer sp-force-hide">
+      <div id="sp-form-249467" sp-id="249467" sp-hash="7b847da19c39f56eb348cdc362e5f58c0ad035b712a0946265cf39bb91727ec1" sp-lang="en" class="sp-form sp-form-regular sp-form-embed sp-form-horizontal" sp-show-options="%7B%22satellite%22%3Afalse%2C%22maDomain%22%3A%22login.sendpulse.com%22%2C%22formsDomain%22%3A%22forms.sendpulse.com%22%2C%22condition%22%3A%22onEnter%22%2C%22scrollTo%22%3A25%2C%22delay%22%3A10%2C%22repeat%22%3A3%2C%22background%22%3A%22rgba(0%2C%200%2C%200%2C%200.5)%22%2C%22position%22%3A%22bottom-right%22%2C%22animation%22%3A%22%22%2C%22hideOnMobile%22%3Afalse%2C%22submitRedirectUrl%22%3A%22%22%2C%22urlFilter%22%3Afalse%2C%22urlFilterConditions%22%3A%5B%7B%22force%22%3A%22hide%22%2C%22clause%22%3A%22contains%22%2C%22token%22%3A%22%22%7D%5D%2C%22analytics%22%3A%7B%22ga%22%3A%7B%22eventLabel%22%3Anull%2C%22send%22%3Afalse%7D%7D%2C%22utmEnable%22%3Afalse%7D">
+        <div class="sp-form-fields-wrapper">
+          <div class="sp-message"><div></div></div>
+          <form novalidate="" class="sp-element-container sp-lg">
+            <div class="sp-field sp-field-full-width" sp-id="sp-a15efa01-b3bc-4d7c-93a1-ff23826871eb">
+              <div style="font-family: inherit; line-height: 1.2;"><p>Get Access To A Free Week of Content</p></div>
+            </div>
+            <div class="sp-field " sp-id="sp-04635a7a-160c-441e-9536-34526b578feb">
+              <div class="sp-checkbox-option">
+                <label><input type="checkbox" sp-type="gdprConfirm" name="sform[Z2RwckNvbmZpcm0=]" value="yes" sp-tips="%7B%22required%22%3A%22Required%20field%22%7D" class=" " required="required"><span>Yes, please keep me updated on news, events and offers</span>&nbsp;<span><strong>*</strong></span></label>
+              </div>
+            </div>
+            <div class="sp-field " sp-id="sp-ea0a36b1-8c23-47e1-a5c2-076c4df75177">
+              <div class="sp-checkbox-option">
+                <label><input type="checkbox" sp-type="gdprTerms" name="sform[Z2RwclRlcm1z]" value="yes" sp-tips="%7B%22required%22%3A%22Required%20field%22%7D" class=" " required="required"><span>By signing up, you agree to our <a href="" target="_blank">Terms of Use and Privacy Policy</a>, including the use of cookies and transfer of your personal information to </span>&nbsp;<span><strong>*</strong></span></label>
+              </div>
+            </div>
+            <div class="sp-field " sp-id="sp-a9b937b3-2ae9-4bfd-9550-52ea9dc6ac56">
+              <label class="sp-control-label"><span>Email</span><strong>*</strong></label>
+              <input type="email" sp-type="email" name="sform[email]" class="sp-form-control " placeholder="username@gmail.com" sp-tips="%7B%22required%22%3A%22Required%20field%22%2C%22wrong%22%3A%22Wrong%20email%22%7D" autocomplete="on" required="required">
+            </div>
+            <div class="sp-field sp-button-container " sp-id="sp-d5755772-3a58-4386-a992-cd1879eaffcf">
+              <button id="sp-d5755772-3a58-4386-a992-cd1879eaffcf" class="sp-button">Send Now </button>
+            </div>
+          </form>
+          <div class="sp-link-wrapper sp-brandname__left">
+            <a class="sp-link " target="_blank" href="https://sendpulse.com/forms-powered-by-sendpulse?from=9224705"><span class="sp-link-img">&nbsp;</span><span translate="FORM.PROVIDED_BY">Provided by SendPulse</span></a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script type="text/javascript" async="async" src="//web.webformscr.com/apps/fc3/build/default-handler.js?1758181175060"></script>
   </section>
-</section>
-   <script src="assets/script.js"></script>
+</div>
+
+<script>
+  function openSidebar() {
+    document.getElementById("sidebar").style.width = "250px";
+  }
+
+  function closeSidebar() {
+    document.getElementById("sidebar").style.width = "0";
+  }
+
+  function openModal(imageSrc, title, description, buttonLink) {
+    document.getElementById("modalImage").src = imageSrc;
+    document.getElementById("modalTitle").innerText = title;
+    document.getElementById("modalDescription").innerText = description;
+    document.getElementById("modalBtn").href = buttonLink;
+    document.getElementById("templateModal").style.display = "block";
+  }
+
+  function closeModal() {
+    document.getElementById("templateModal").style.display = "none";
+  }
+
+  // Close modal when clicking outside of it
+  window.onclick = function(event) {
+    const modal = document.getElementById("templateModal");
+    if (event.target == modal) {
+      modal.style.display = "none";
+    }
+  }
+</script>
 
 </body>
 </html>
-
