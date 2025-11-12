@@ -3,283 +3,425 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>First-Time Buyers | Ravierra.Co</title>
-  <link rel="stylesheet" href="assets/style.css">
+  <title>Sellers' Toolkit | Ravierra.Co</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Bodoni Moda', 'Questrial', serif;
+      background-color: #032b22;
+      color: white;
+    }
 
+    .main-content {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 40px;
+    }
+
+    .hero {
+      position: relative;
+      text-align: center;
+      color: white;
+      margin-bottom: 40px;
+    }
+
+    .hero-img {
+      width: 100%;
+      height: 400px;
+      object-fit: cover;
+      filter: brightness(0.7);
+    }
+
+    .hero-text {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      z-index: 10;
+    }
+
+    .hero-text h1 {
+      font-size: 4rem;
+      margin: 0;
+      text-shadow: 2px 2px 4px rgba(0,0,0,0.8);
+    }
+
+    .hero-text p {
+      font-size: 1.5rem;
+      margin: 10px 0 0;
+      text-shadow: 1px 1px 3px rgba(0,0,0,0.8);
+    }
+
+    /* Sidebar Styles */
+    .sidebar {
+      height: 100%;
+      width: 0;
+      position: fixed;
+      z-index: 1000;
+      top: 0;
+      left: 0;
+      background-color: #111;
+      overflow-x: hidden;
+      transition: 0.3s;
+      padding-top: 60px;
+    }
+
+    .sidebar a {
+      padding: 15px 30px;
+      text-decoration: none;
+      font-size: 1.2rem;
+      color: white;
+      display: block;
+      transition: 0.3s;
+    }
+
+    .sidebar a:hover {
+      background-color: #e75480;
+    }
+
+    .sidebar .close-btn {
+      position: absolute;
+      top: 10px;
+      right: 25px;
+      font-size: 36px;
+      background: none;
+      border: none;
+      color: white;
+      cursor: pointer;
+    }
+
+    .open-btn {
+      position: fixed;
+      top: 20px;
+      left: 20px;
+      z-index: 999;
+      font-size: 20px;
+      cursor: pointer;
+      background-color: #e75480;
+      color: white;
+      padding: 10px 15px;
+      border: none;
+      border-radius: 5px;
+    }
+
+    /* Modal Styles */
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 2000;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      overflow: auto;
+      background-color: rgba(0,0,0,0.8);
+    }
+
+    .modal-content {
+      background-color: #1c1c1c;
+      margin: 5% auto;
+      padding: 30px;
+      border-radius: 12px;
+      width: 85%;
+      max-width: 900px;
+      display: flex;
+      gap: 30px;
+      align-items: flex-start;
+      position: relative;
+    }
+
+    .modal-close {
+      color: #aaa;
+      position: absolute;
+      top: 15px;
+      right: 20px;
+      font-size: 32px;
+      font-weight: bold;
+      cursor: pointer;
+      z-index: 10;
+    }
+
+    .modal-close:hover {
+      color: white;
+    }
+
+    .modal-image {
+      width: 300px;
+      height: auto;
+      border-radius: 8px;
+      flex-shrink: 0;
+    }
+
+    .modal-body {
+      flex: 1;
+      padding-top: 10px;
+    }
+
+    .modal-body h3 {
+      color: #fffef1;
+      margin-bottom: 15px;
+      font-size: 1.8rem;
+    }
+
+    .modal-body p {
+      color: #ccc;
+      line-height: 1.6;
+      margin-bottom: 20px;
+      white-space: pre-line;
+    }
+
+    .modal-btn {
+      display: inline-block;
+      background: #e75480;
+      color: white;
+      padding: 12px 24px;
+      text-decoration: none;
+      border-radius: 24px;
+      font-weight: 700;
+      margin-top: 15px;
+    }
+
+    .modal-btn:hover {
+      background: #d34672;
+    }
+
+    @media (max-width: 768px) {
+      .modal-content {
+        flex-direction: column;
+        width: 90%;
+      }
+
+      .modal-image {
+        width: 100%;
+      }
+    }
+
+    /* Section Styles */
+    section {
+      margin: 60px 0;
+    }
+
+    section h2 {
+      font-size: 3rem;
+      font-weight: 800;
+      margin-bottom: 30px;
+      border-bottom: 2px solid #fffef1;
+      display: inline-block;
+      padding-bottom: 5px;
+    }
+
+    .scroll-container {
+      display: flex;
+      gap: 20px;
+      overflow-x: auto;
+      padding: 20px 0;
+      scroll-behavior: smooth;
+    }
+
+    .scroll-container::-webkit-scrollbar {
+      height: 8px;
+    }
+
+    .scroll-container::-webkit-scrollbar-track {
+      background: #1c1c1c;
+      border-radius: 4px;
+    }
+
+    .scroll-container::-webkit-scrollbar-thumb {
+      background: #e75480;
+      border-radius: 4px;
+    }
+
+    .card {
+      background-color: #1c1c1c;
+      border-radius: 12px;
+      min-width: 250px;
+      overflow: hidden;
+      box-shadow: 0 6px 15px rgba(0,0,0,0.4);
+      transition: all 0.3s ease;
+      position: relative;
+      cursor: pointer;
+      flex-shrink: 0;
+    }
+
+    .card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: linear-gradient(135deg, #ec4899 0%, #ef4444 100%);
+      opacity: 0;
+      transition: opacity 0.3s ease;
+      z-index: 0;
+    }
+
+    .card:hover::before {
+      opacity: 1;
+    }
+
+    .card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 12px 24px rgba(236, 72, 153, 0.3);
+    }
+
+    .card img {
+      width: 100%;
+      height: 300px;
+      object-fit: cover;
+      position: relative;
+      z-index: 1;
+      transition: transform 0.3s ease;
+    }
+
+    .card:hover img {
+      transform: scale(1.05);
+    }
+
+    .card p {
+      display: none;
+    }
+
+    .card .btn {
+      display: block;
+      background: #e75480;
+      color: #ffffff;
+      padding: 10px 16px;
+      text-decoration: none;
+      border-radius: 24px;
+      font-weight: 700;
+      text-align: center;
+      width: fit-content;
+      margin: 15px auto 20px;
+      position: relative;
+      z-index: 2;
+      transition: all 0.3s ease;
+    }
+
+    .card:hover .btn {
+      background: white;
+      color: #ec4899;
+    }
+
+    @media (max-width: 768px) {
+      .hero-text h1 {
+        font-size: 2.5rem;
+      }
+
+      section h2 {
+        font-size: 2rem;
+      }
+
+      .card {
+        min-width: 200px;
+      }
+
+      .main-content {
+        padding: 0 20px;
+      }
+    }
+  </style>
 </head>
 <body>
-  <!-- Sidebar (same on every page) -->
-<div id="sidebar" class="sidebar">
-  <button class="close-btn" onclick="closeSidebar()" aria-label="Close sidebar">×</button>
-  <nav>
-    <a href="index.html">Home</a>
-    <a href="first-time-buyers.html">First-Time Buyers</a>
-    <a href="neighborhood.html">Neighborhood & Events</a>
-    <a href="sellers.html">Sellers</a>
-    <a href="lead-magnets.html">Lead Magnets</a>
-    <a href="reel-scripts.html">Reel Scripts</a>
-  </nav>
-</div>
-
-<!-- Open button (place inside header so it overlays the hero) -->
-<button class="open-btn" onclick="openSidebar()" aria-label="Open content">☰ Content</button>
-<header class="hero">
-  <img src="assets/Header.jpeg" alt="Sellers" class="hero-img">
-  <div class="hero-text">
-    <h1>Sellers’ Toolkit</h1>
-    <p>Content that converts listings into sales</p>
+  <!-- Sidebar -->
+  <div id="sidebar" class="sidebar">
+    <button class="close-btn" onclick="closeSidebar()" aria-label="Close sidebar">×</button>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="first-time-buyers.html">First-Time Buyers</a>
+      <a href="neighborhood.html">Neighborhood & Events</a>
+      <a href="sellers.html">Sellers</a>
+      <a href="lead-magnets.html">Lead Magnets</a>
+      <a href="reel-scripts.html">Reel Scripts</a>
+    </nav>
   </div>
-</header>
 
-<!-- MODAL (Add this RIGHT AFTER your closing </header> tag) -->
-<div id="templateModal" class="modal">
-  <div class="modal-content">
-    <span class="modal-close" onclick="closeModal()">&times;</span>
-    <img id="modalImage" class="modal-image" src="" alt="Template Preview">
-    <div class="modal-body">
-      <h3 id="modalTitle">Template Title</h3>
-      <p id="modalDescription">Click "Use Template" below to open this template in Canva and customize it for your real estate business.</p>
-      <a id="modalBtn" href="#" class="modal-btn" target="_blank">Use Template</a>
+  <!-- Open Sidebar Button -->
+  <button class="open-btn" onclick="openSidebar()" aria-label="Open content">☰ Content</button>
+
+  <header class="hero">
+    <img src="https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=1200&h=400&fit=crop" alt="Sellers" class="hero-img">
+    <div class="hero-text">
+      <h1>Sellers' Toolkit</h1>
+      <p>Content that converts listings into sales</p>
+    </div>
+  </header>
+
+  <!-- MODAL -->
+  <div id="templateModal" class="modal">
+    <div class="modal-content">
+      <span class="modal-close" onclick="closeModal()">&times;</span>
+      <img id="modalImage" class="modal-image" src="" alt="Template Preview">
+      <div class="modal-body">
+        <h3 id="modalTitle">Template Title</h3>
+        <p id="modalDescription">Click "Use Template" below to open this template in Canva and customize it for your real estate business.</p>
+        <a id="modalBtn" href="#" class="modal-btn" target="_blank">Use Template</a>
+      </div>
     </div>
   </div>
-</div>
 
   <main class="main-content">
     <section>
       <h2>Reels</h2>
       <div class="scroll-container">
-        <div class="card">
-          <img src=" sellers mistake.png" alt="Reel 1" />
-          <p>Buying Made Simple</p>
-         <a href="https://www.canva.com/design/DAGxk9VxXQE/aG0WwtVtiWqCt0JM9j-nUQ/view?utm_content=DAGxk9VxXQE&utm_campaign=designshare&utm_medium=link&utm_source=publishsharelink&mode=preview" 
-     class="btn" 
-     target="_blank">
-     Use Template
-  </a>
-</div>
-        <div class="card">
-          <img src="0 000 000 luxury trick I used on this house.png" alt="Reel 1" />
-          <p>Buying Made Simple</p>
-         <a href="https://www.canva.com/design/DAGyJbfUQqc/aipe9ygKkAcHCrEZSpTzjQ/view?utm_content=DAGyJbfUQqc&utm_campaign=designshare&utm_medium=link&utm_source=publishsharelink&mode=preview" 
-     class="btn" 
-     target="_blank">
-     Use Template
-  </a>
-</div>
-        <div class="card">
-          <img src="When you realize that this home mastered the 8 second rule.png" alt="Reel 1" />
-          <p>Buying Made Simple</p>
-         <a href="https://www.canva.com/design/DAGyJQuR1Ik/GwU22G2N2YadkscZjmtVgA/view?utm_content=DAGyJQuR1Ik&utm_campaign=designshare&utm_medium=link&utm_source=publishsharelink&mode=preview" 
-     class="btn" 
-     target="_blank">
-     Use Template
-  </a>
-</div>
-        <div class="card">
-          <img src="agents.png" alt="Reel 1" />
-          <p>Buying Made Simple</p>
-         <a href="https://www.canva.com/design/DAGyJVkJ2c4/x9td6GTGYUR7r83pUDlZVA/view?utm_content=DAGyJVkJ2c4&utm_campaign=designshare&utm_medium=link&utm_source=publishsharelink&mode=preview" 
-     class="btn" 
-     target="_blank">
-     Use Template
-  </a>
-</div>
-        <div class="card">
-          <img src="First offer can be the best offer.png" alt="Reel 1" />
-          <p>Buying Made Simple</p>
-         <a href="https://www.canva.com/design/DAGyJfLSIGY/ut-SUlXvcS24UqYJgGv4OA/view?utm_content=DAGyJfLSIGY&utm_campaign=designshare&utm_medium=link&utm_source=publishsharelink&mode=preview" 
-     class="btn" 
-     target="_blank">
-     Use Template
-  </a>
-</div>
-        <div class="card">
-          <img src="POV.png" alt="Reel 1" />
-          <p>Buying Made Simple</p>
-         <a href="https://www.canva.com/design/DAGyJauSf7I/8Gzxr5ooIP04XtSbBsA04A/view?utm_content=DAGyJauSf7I&utm_campaign=designshare&utm_medium=link&utm_source=publishsharelink&mode=previeww" 
-     class="btn" 
-     target="_blank">
-     Use Template
-  </a>
-</div>
-        <div class="card">
-          <img src="$0 000 000.png" alt="Reel 1" />
-          <p>Buying Made Simple</p>
-         <a href="https://www.canva.com/design/DAGyJVp6CJI/Ry-yZ2nfsD2-ZaBYZwaG1w/view?utm_content=DAGyJVp6CJI&utm_campaign=designshare&utm_medium=link&utm_source=publishsharelink&mode=preview" 
-     class="btn" 
-     target="_blank">
-     Use Template
-  </a>
-</div>
-        <div class="card">
-          <img src="When you realise that very seller in [city] should know this.png" alt="Reel 1" />
-          <p>Buying Made Simple</p>
-         <a href="https://www.canva.com/design/DAGyJTj-2Cw/BSb9H2VB6NjBxfRxIdfVOw/view?utm_content=DAGyJTj-2Cw&utm_campaign=designshare&utm_medium=link&utm_source=publishsharelink&mode=preview" 
-     class="btn" 
-     target="_blank">
-     Use Template
-  </a>
-</div>
-        <div class="card">
-          <img src="Hold this secret.png" alt="Reel 1" />
-          <p>Buying Made Simple</p>
-         <a href="https://www.canva.com/design/DAGyJS_JRCw/re0YzIbIFUCnWp6DeHAPDA/view?utm_content=DAGyJS_JRCw&utm_campaign=designshare&utm_medium=link&utm_source=publishsharelink&mode=preview" 
-     class="btn" 
-     target="_blank">
-     Use Template
-  </a>
-</div>
-        <div class="card">
-          <img src="$0 000 000.png" alt="Reel 1" />
-          <p>Buying Made Simple</p>
-         <a href="https://www.canva.com/design/DAGyJeCW6ck/zYvLZxQ82ylnhJsPSxeVBw/view?utm_content=DAGyJeCW6ck&utm_campaign=designshare&utm_medium=link&utm_source=publishsharelink&mode=preview" 
-     class="btn" 
-     target="_blank">
-     Use Template
-  </a>
-</div>
+        <div class="card" onclick="openModal('https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=400&h=600&fit=crop', 'Sellers Mistake', 'Comment \'MISTAKE\' ↓ for the full seller mistake list\n\nThe biggest mistake sellers make? Thinking their home is worth what they WANT it to be worth, not what the market says 📊\n\nI get it - you\'ve made memories here, you\'ve invested time and money. But buyers don\'t see that. They see:\n→ Comparable sales in your area\n→ Current market conditions\n→ What they can get for their money elsewhere\n\nPricing right from day 1 = more showings, better offers, faster sale.\n\nLet\'s get your pricing strategy RIGHT 💪\n\n#sellingtips #realestate #homeselling #pricing', 'https://www.canva.com/design/DAGxk9VxXQE/aG0WwtVtiWqCt0JM9j-nUQ/view?utm_content=DAGxk9VxXQE&utm_campaign=designshare&utm_medium=link&utm_source=publishsharelink&mode=preview')">
+          <img src="https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=400&h=600&fit=crop" alt="Sellers Mistake" />
+          <a href="https://www.canva.com/design/DAGxk9VxXQE/aG0WwtVtiWqCt0JM9j-nUQ/view?utm_content=DAGxk9VxXQE&utm_campaign=designshare&utm_medium=link&utm_source=publishsharelink&mode=preview" class="btn" target="_blank" onclick="event.stopPropagation();">Use Template</a>
+        </div>
+
+        <div class="card" onclick="openModal('https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=400&h=600&fit=crop', '$0 Luxury Trick', 'Comment \'LUXURY\' ↓ for the full breakdown\n\nThe $0 styling trick that makes any home look like a million bucks ✨\n\nI used this in every listing I stage and buyers consistently think these homes are worth MORE than asking. This costs literally nothing, takes 10 minutes, and instantly elevates your space.\n\nThe secret?\n→ Strategic lighting placement\n→ Removing 1/3 of your furniture\n→ Intentional sightlines through doorways\n→ The 3-point styling rule\n\nBefore using this trick: Homes sat on market 45+ days\nAfter: Average 12 days to offer\n\nSave this and try it in your own space this weekend 👇\n\n#luxuryhomes #homestaging #realestatetips #homeselling', 'https://www.canva.com/design/DAGyJbfUQqc/aipe9ygKkAcHCrEZSpTzjQ/view?utm_content=DAGyJbfUQqc&utm_campaign=designshare&utm_medium=link&utm_source=publishsharelink&mode=preview')">
+          <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=400&h=600&fit=crop" alt="Luxury Trick" />
+          <a href="https://www.canva.com/design/DAGyJbfUQqc/aipe9ygKkAcHCrEZSpTzjQ/view?utm_content=DAGyJbfUQqc&utm_campaign=designshare&utm_medium=link&utm_source=publishsharelink&mode=preview" class="btn" target="_blank" onclick="event.stopPropagation();">Use Template</a>
+        </div>
+
+        <div class="card" onclick="openModal('https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?w=400&h=600&fit=crop', '8 Second Rule Mastered', 'Comment \'RULE\' ↓ for staging tips\n\nWhen you realize this home mastered the 8-second rule 🎯\n\nBuyers decide if they like a home in the first 8 seconds of walking through the door. That\'s it. 8 SECONDS.\n\nThis listing nailed it:\n→ Clean, bright entryway\n→ Clear sightline to best feature\n→ Neutral colors that don\'t distract\n→ No clutter blocking the flow\n\nResult? Multiple offers in 3 days 🔥\n\nYour entryway is make-or-break. Don\'t waste those 8 seconds.\n\n#8secondrule #homestaging #sellingtips #realestate', 'https://www.canva.com/design/DAGyJQuR1Ik/GwU22G2N2YadkscZjmtVgA/view?utm_content=DAGyJQuR1Ik&utm_campaign=designshare&utm_medium=link&utm_source=publishsharelink&mode=preview')">
+          <img src="https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?w=400&h=600&fit=crop" alt="8 Second Rule" />
+          <a href="https://www.canva.com/design/DAGyJQuR1Ik/GwU22G2N2YadkscZjmtVgA/view?utm_content=DAGyJQuR1Ik&utm_campaign=designshare&utm_medium=link&utm_source=publishsharelink&mode=preview" class="btn" target="_blank" onclick="event.stopPropagation();">Use Template</a>
+        </div>
+
+        <div class="card" onclick="openModal('https://images.unsplash.com/photo-1582407947304-fd86f028f716?w=400&h=600&fit=crop', 'Agent Perspective', 'Comment \'AGENT\' ↓ for insider tips\n\nWhat agents really think when they walk through your listing (but won\'t say to your face) 👀\n\n"The photos looked better"\n"It smells weird in here"\n"Why is all their stuff still here?"\n"This price is... ambitious"\n\nThe truth? Agents talk. And if your home isn\'t show-ready, they\'ll skip it or warn their buyers away.\n\nMake agents WANT to show your home:\n→ Professional photos\n→ Deep clean + fresh air\n→ Declutter EVERYTHING\n→ Price it right\n\n#realestateagent #sellingtips #hometour #listing', 'https://www.canva.com/design/DAGyJVkJ2c4/x9td6GTGYUR7r83pUDlZVA/view?utm_content=DAGyJVkJ2c4&utm_campaign=designshare&utm_medium=link&utm_source=publishsharelink&mode=preview')">
+          <img src="https://images.unsplash.com/photo-1582407947304-fd86f028f716?w=400&h=600&fit=crop" alt="Agent Tips" />
+          <a href="https://www.canva.com/design/DAGyJVkJ2c4/x9td6GTGYUR7r83pUDlZVA/view?utm_content=DAGyJVkJ2c4&utm_campaign=designshare&utm_medium=link&utm_source=publishsharelink&mode=preview" class="btn" target="_blank" onclick="event.stopPropagation();">Use Template</a>
+        </div>
+
+        <div class="card" onclick="openModal('https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=400&h=600&fit=crop', 'First Offer Best Offer', 'Comment \'OFFER\' ↓ for negotiation strategies\n\nFirst offer can be the best offer 💰\n\nSellers love to say "let\'s wait and see what else comes in" but here\'s the reality:\n\nWeek 1: Strong offers from serious buyers\nWeek 2-3: Curiosity seekers, lowballers\nWeek 4+: "What\'s wrong with it?" buyers\n\nThe longer your home sits, the weaker your negotiating position becomes.\n\nIf you get a solid offer in the first week:\n→ Counter if needed\n→ But don\'t get greedy\n→ The market is telling you something\n\nTime costs money in real estate.\n\n#sellingtips #negotiations #homeselling #realestate', 'https://www.canva.com/design/DAGyJfLSIGY/ut-SUlXvcS24UqYJgGv4OA/view?utm_content=DAGyJfLSIGY&utm_campaign=designshare&utm_medium=link&utm_source=publishsharelink&mode=preview')">
+          <img src="https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=400&h=600&fit=crop" alt="First Offer" />
+          <a href="https://www.canva.com/design/DAGyJfLSIGY/ut-SUlXvcS24UqYJgGv4OA/view?utm_content=DAGyJfLSIGY&utm_campaign=designshare&utm_medium=link&utm_source=publishsharelink&mode=preview" class="btn" target="_blank" onclick="event.stopPropagation();">Use Template</a>
+        </div>
+
+        <div class="card" onclick="openModal('https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=400&h=600&fit=crop', 'POV Staging Success', 'Comment \'POV\' ↓ for more staging content\n\nPOV: You finally understand why staging matters 🏡✨\n\nBefore staging: 47 days on market, 0 offers\nAfter staging: 8 days, multiple offers, sold $15K over asking\n\nSame house. Same price. Different presentation.\n\nBuyers can\'t see past clutter and personal items. Staging helps them imagine THEIR life in YOUR space.\n\nInvestment: $2-4K\nReturn: Typically 5-15% higher sale price\n\nThe math adds up. Every. Single. Time.\n\n#homestaging #pov #sellingtips #realestate', 'https://www.canva.com/design/DAGyJauSf7I/8Gzxr5ooIP04XtSbBsA04A/view?utm_content=DAGyJauSf7I&utm_campaign=designshare&utm_medium=link&utm_source=publishsharelink&mode=preview')">
+          <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=400&h=600&fit=crop" alt="POV Staging" />
+          <a href="https://www.canva.com/design/DAGyJauSf7I/8Gzxr5ooIP04XtSbBsA04A/view?utm_content=DAGyJauSf7I&utm_campaign=designshare&utm_medium=link&utm_source=publishsharelink&mode=preview" class="btn" target="_blank" onclick="event.stopPropagation();">Use Template</a>
+        </div>
+
+        <div class="card" onclick="openModal('https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=400&h=600&fit=crop', 'Price Drop Reality', 'Comment \'PRICE\' ↓ for pricing strategies\n\n$[XXX,XXX] → Price drop reality check 📉\n\nEvery price reduction sends a message to buyers:\n"We overpriced this"\n"Something must be wrong"\n"Let\'s lowball them"\n\nOne price drop? You might recover.\nTwo price drops? You\'re chasing the market.\nThree price drops? You\'ve lost all leverage.\n\nStart with the RIGHT price from day 1:\n→ Based on recent comps\n→ Not your wishful thinking\n→ Not your neighbor\'s opinion\n→ Market data only\n\nPrice it right once, or keep dropping it until someone finally bites 🎣\n\n#pricing #homeselling #realestate #sellingstrategies', 'https://www.canva.com/design/DAGyJVp6CJI/Ry-yZ2nfsD2-ZaBYZwaG1w/view?utm_content=DAGyJVp6CJI&utm_campaign=designshare&utm_medium=link&utm_source=publishsharelink&mode=preview')">
+          <img src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=400&h=600&fit=crop" alt="Price Drop" />
+          <a href="https://www.canva.com/design/DAGyJVp6CJI/Ry-yZ2nfsD2-ZaBYZwaG1w/view?utm_content=DAGyJVp6CJI&utm_campaign=designshare&utm_medium=link&utm_source=publishsharelink&mode=preview" class="btn" target="_blank" onclick="event.stopPropagation();">Use Template</a>
+        </div>
+
+        <div class="card" onclick="openModal('https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=400&h=600&fit=crop', 'Every Seller Should Know', 'Comment \'KNOW\' ↓ for the complete guide\n\nWhen you realize every seller in [city] should know this 🤯\n\nThe best time to sell isn\'t always when YOU\'re ready - it\'s when the MARKET is ready.\n\nRight now in [city]:\n→ Inventory is [low/moderate/high]\n→ Average days on market: [X] days\n→ Homes are selling for [above/at/below] asking\n→ Buyer demand is [strong/moderate/soft]\n\nKnowing your local market conditions = better decisions, better outcomes.\n\nLet\'s talk about YOUR specific situation and timing 💡\n\n#markettiming #sellingtips #localmarket #realestate', 'https://www.canva.com/design/DAGyJTj-2Cw/BSb9H2VB6NjBxfRxIdfVOw/view?utm_content=DAGyJTj-2Cw&utm_campaign=designshare&utm_medium=link&utm_source=publishsharelink&mode=preview')">
+          <img src="https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=400&h=600&fit=crop" alt="Every Seller" />
+          <a href="https://www.canva.com/design/DAGyJTj-2Cw/BSb9H2VB6NjBxfRxIdfVOw/view?utm_content=DAGyJTj-2Cw&utm_campaign=designshare&utm_medium=link&utm_source=publishsharelink&mode=preview" class="btn" target="_blank" onclick="event.stopPropagation();">Use Template</a>
+        </div>
+
+        <div class="card" onclick="openModal('https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=400&h=600&fit=crop', 'Secret Sellers Need', 'Comment \'SECRET\' ↓ and I\'ll send you my seller guide\n\nHold this secret if you\'re thinking about selling 🤫\n\nMost sellers wait until spring because "that\'s when everyone sells."\n\nBut here\'s what the data shows:\n→ Less competition in off-season\n→ Serious buyers only (not looky-loos)\n→ Faster negotiations\n→ Sometimes HIGHER prices due to low inventory\n\nEveryone zigs, you zag. That\'s how you win.\n\nTiming isn\'t everything, but it\'s something worth considering 📊\n\n#sellersecrets #realestate #marketstrategies #homeselling', 'https://www.canva.com/design/DAGyJS_JRCw/re0YzIbIFUCnWp6DeHAPDA/view?utm_content=DAGyJS_JRCw&utm_campaign=designshare&utm_medium=link&utm_source=publishsharelink&mode=preview')">
+          <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=400&h=600&fit=crop" alt="Secret" />
+          <a href="https://www.canva.com/design/DAGyJS_JRCw/re0YzIbIFUCnWp6DeHAPDA/view?utm_content=DAGyJS_JRCw&utm_campaign=designshare&utm_medium=link&utm_source=publishsharelink&mode=preview" class="btn" target="_blank" onclick="event.stopPropagation();">Use Template</a>
+        </div>
+
+        <div class="card" onclick="openModal('https://images.unsplash.com/photo-1600607687644-aac4c3eac7f4?w=400&h=600&fit=crop', 'Sold Above Asking', 'Comment \'SOLD\' ↓ for my selling strategy guide\n\n$[XXX,XXX] SOLD - $15K over asking! 🎉\n\nWhat made this listing so successful?\n→ Professional photography\n→ Strategic pricing (at market value, not above)\n→ Full staging throughout\n→ Targeted marketing to qualified buyers\n→ Open house that felt like an event\n\nResult: 4 offers in 6 days, closed $15K over asking price.\n\nThis is what happens when you do it RIGHT from the start 💪\n\n#justsold #realestate #homeselling #success', 'https://www.canva.com/design/DAGyJeCW6ck/zYvLZxQ82ylnhJsPSxeVBw/view?utm_content=DAGyJeCW6ck&utm_campaign=designshare&utm_medium=link&utm_source=publishsharelink&mode=preview')">
+          <img src="https://images.unsplash.com/photo-1600607687644-aac4c3eac7f4?w=400&h=600&fit=crop" alt="Sold Above Asking" />
+          <a href="https://www.canva.com/design/DAGyJeCW6ck/zYvLZxQ82ylnhJsPSxeVBw/view?utm_content=DAGyJeCW6ck&utm_campaign=designshare&utm_medium=link&utm_source=publishsharelink&mode=preview" class="btn" target="_blank" onclick="event.stopPropagation();">Use Template</a>
+        </div>
       </div>
     </section>
 
     <section>
       <h2>Carousels</h2>
       <div class="scroll-container">
-        <div class="card">
-          <img src="REALITY OF SELLING YOUR HOME.png" alt="Carousel 1" />
-          <p>Steps to Homeownership</p>
-           <a href="https://www.canva.com/design/DAGyJejV3wc/JgC573P7WsO-60oAFRsK4Q/view?utm_content=DAGyJejV3wc&utm_campaign=designshare&utm_medium=link&utm_source=publishsharelink&mode=preview" 
-     class="btn" 
-     target="_blank">
-     Use Template
-  </a>
-</div>
-         <div class="card">
-          <img src="BUYERS NOTICE THIS WHEN TOURING.png" alt="Carousel 1" />
-          <p>Steps to Homeownership</p>
-           <a href="https://www.canva.com/design/DAGyJcjo7D0/9gc27R4ZmZIJv9joruZWcw/view?utm_content=DAGyJcjo7D0&utm_campaign=designshare&utm_medium=link&utm_source=publishsharelink&mode=preview" 
-     class="btn" 
-     target="_blank">
-     Use Template
-  </a>
-</div>
-         <div class="card">
-          <img src="STAGING SECRETS THAT BUYERS LOVE.png" alt="Carousel 1" />
-          <p>Steps to Homeownership</p>
-           <a href="https://www.canva.com/design/DAGyIT4Z29o/3thiuiqBSHj3eyyymgolKQ/view?utm_content=DAGyIT4Z29o&utm_campaign=designshare&utm_medium=link&utm_source=publishsharelink&mode=preview" 
-     class="btn" 
-     target="_blank">
-     Use Template
-  </a>
-</div>
-         <div class="card">
-          <img src="TIMELINE AFTER YOU DECIDE TO SELL.png" alt="Carousel 1" />
-          <p>Steps to Homeownership</p>
-           <a href="https://www.canva.com/design/DAGyJeONQ5c/VEoj_Jxg_gtW3y09r5vD0w/view?utm_content=DAGyJeONQ5c&utm_campaign=designshare&utm_medium=link&utm_source=publishsharelink&mode=preview" 
-     class="btn" 
-     target="_blank">
-     Use Template
-  </a>
-</div>
-         <div class="card">
-          <img src="SELL NOW OR WAIT.png" alt="Carousel 1" />
-          <p>Steps to Homeownership</p>
-           <a href="https://www.canva.com/design/DAGyJQ74Qf8/HRjHaq7FE0ntGluiSSqZ0w/view?utm_content=DAGyJQ74Qf8&utm_campaign=designshare&utm_medium=link&utm_source=publishsharelink&mode=preview" 
-     class="btn" 
-     target="_blank">
-     Use Template
-  </a>
-</div>
-         <div class="card">
-          <img src="SELL FAST AND GET TOP DOLLAR.png" alt="Carousel 1" />
-          <p>Steps to Homeownership</p>
-           <a href="https://www.canva.com/design/DAGyJccWt78/SqkU9-a7Scpo9Cl_DY5Q4A/view?utm_content=DAGyJccWt78&utm_campaign=designshare&utm_medium=link&utm_source=publishsharelink&mode=preview" 
-     class="btn" 
-     target="_blank">
-     Use Template
-  </a>
-</div>
-      </div>
-    </section>
-
-    <section>
-      <h2>Stories</h2>
-      <div class="scroll-container">
-        <div class="card">
-          <img src="new listing on the way.png" alt="Story 1" />
-          <p>First time buyer tips dropping Friday.png</p>
-             <a href="https://www.canva.com/design/DAGyJYolBYI/Xw7Qf0Eo7j3s5O2AHRPl9g/view?utm_content=DAGyJYolBYI&utm_campaign=designshare&utm_medium=link&utm_source=publishsharelink&mode=preview" 
-     class="btn" 
-     target="_blank">
-     Use Template
-  </a>
-</div>
-        <div class="card">
-          <img src="staging.png" alt="Story 1" />
-          <p>What are your thoughts.png</p>
-             <a href="https://www.canva.com/design/DAGyJXCtoF8/nBSEnnvVPbXtS0tj1nUcxA/view?utm_content=DAGyJXCtoF8&utm_campaign=designshare&utm_medium=link&utm_source=publishsharelink&mode=preview" 
-     class="btn" 
-     target="_blank">
-     Use Template
-  </a>
-</div>
-        <div class="card">
-          <img src="i am in love.png" alt="Story 1" />
-          <p>Which would you pick for your first home.png</p>
-             <a href="https://www.canva.com/design/DAGyIVYxjn0/fjaQRzRDZE3AwlN4pvLxIA/view?utm_content=DAGyIVYxjn0&utm_campaign=designshare&utm_medium=link&utm_source=publishsharelink&mode=preview" 
-     class="btn" 
-     target="_blank">
-     Use Template
-  </a>
-</div>
-        <div class="card">
-          <img src="that kind of day.png" alt="Story 1" />
-          <p>Have you talked to a lender yet.png</p>
-             <a href="https://www.canva.com/design/DAGyJd8U-d8/QK6MdXOyvIRjQzaaRMzyAg/view?utm_content=DAGyJd8U-d8&utm_campaign=designshare&utm_medium=link&utm_source=publishsharelink&mode=preview" 
-     class="btn" 
-     target="_blank">
-     Use Template
-  </a>
-</div>
-        <div class="card">
-          <img src="my second coffee today.png" alt="Story 1" />
-          <p>True or false.png</p>
-             <a href="https://www.canva.com/design/DAGyJd8U-d8/QK6MdXOyvIRjQzaaRMzyAg/view?utm_content=DAGyJd8U-d8&utm_campaign=designshare&utm_medium=link&utm_source=publishsharelink&mode=preview" 
-     class="btn" 
-     target="_blank">
-     Use Template
-  </a>
-</div>
-           <div class="card">
-          <img src="This just in [house sold].png" alt="Story 1" />
-          <p>True or false.png</p>
-             <a href="https://www.canva.com/design/DAGyIZBRdKc/WF2swpwCBEAwY7Sf89obBA/view?utm_content=DAGyIZBRdKc&utm_campaign=designshare&utm_medium=link&utm_source=publishsharelink&mode=preview" 
-     class="btn" 
-     target="_blank">
-     Use Template
-  </a>
-</div>
-           <div class="card">
-          <img src="had to treat myself after my sale today.png" alt="Story 1" />
-          <p>True or false.png</p>
-             <a href="https://www.canva.com/design/DAGyJYFw5HI/vC_FEzIRnj0I7Qav-7YmJQ/view?utm_content=DAGyJYFw5HI&utm_campaign=designshare&utm_medium=link&utm_source=publishsharelink&mode=preview" 
-     class="btn" 
-     target="_blank">
-     Use Template
-  </a>
-</div>
-           <div class="card">
-          <img src="wanted.png" alt="Story 1" />
-          <p>True or false.png</p>
-             <a href="https://www.canva.com/design/DAGyJdh5LdA/EDjqZtvYwDtTM2r8tC6M1g/view?utm_content=DAGyJdh5LdA&utm_campaign=designshare&utm_medium=link&utm_source=publishsharelink&mode=preview" 
-     class="btn" 
-     target="_blank">
-     Use Template
-  </a>
-</div>
-      </div>
-    </section>
-  </main>
-
+        <div class="card" onclick="openModal('https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=400&h=600&fit=crop', 'Reality of Selling Your Home', 'Comment \'REALITY\' ↓ for the complete breakdown\n\nTHE REALITY OF SELLING YOUR HOME 🏡\n\nWhat you think it\'ll be:\n→ List it, offers pour in, easy close\n\nWhat it actually is:\n→ Deep cleaning EVERYTHING\n→ Repairs you\'ve been putting off\n→ Staging and decluttering\n→ Coordinating showings\n→ Negotiations that test your patience\n→ Inspections that find issues\n→ Paperwork. So much paperwork.\n\nBUT with the right agent and strategy:\n→ Process is manageable\n→ Timeline is predict
 <script src="assets/script.js"></script>
 
 </body>
