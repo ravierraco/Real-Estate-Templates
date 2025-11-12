@@ -4,271 +4,426 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>First-Time Buyers | Ravierra.Co</title>
- <link rel="stylesheet" href="assets/style.css">
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Bodoni Moda', 'Questrial', serif;
+      background-color: #032b22;
+      color: white;
+    }
 
+    .main-content {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 40px;
+    }
+
+    .hero {
+      position: relative;
+      text-align: center;
+      color: white;
+      margin-bottom: 40px;
+    }
+
+    .hero-img {
+      width: 100%;
+      height: 400px;
+      object-fit: cover;
+      filter: brightness(0.7);
+    }
+
+    .hero-text {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      z-index: 10;
+    }
+
+    .hero-text h1 {
+      font-size: 4rem;
+      margin: 0;
+      text-shadow: 2px 2px 4px rgba(0,0,0,0.8);
+    }
+
+    .hero-text p {
+      font-size: 1.5rem;
+      margin: 10px 0 0;
+      text-shadow: 1px 1px 3px rgba(0,0,0,0.8);
+    }
+
+    /* Sidebar Styles */
+    .sidebar {
+      height: 100%;
+      width: 0;
+      position: fixed;
+      z-index: 1000;
+      top: 0;
+      left: 0;
+      background-color: #111;
+      overflow-x: hidden;
+      transition: 0.3s;
+      padding-top: 60px;
+    }
+
+    .sidebar a {
+      padding: 15px 30px;
+      text-decoration: none;
+      font-size: 1.2rem;
+      color: white;
+      display: block;
+      transition: 0.3s;
+    }
+
+    .sidebar a:hover {
+      background-color: #e75480;
+    }
+
+    .sidebar .close-btn {
+      position: absolute;
+      top: 10px;
+      right: 25px;
+      font-size: 36px;
+      background: none;
+      border: none;
+      color: white;
+      cursor: pointer;
+    }
+
+    .open-btn {
+      position: fixed;
+      top: 20px;
+      left: 20px;
+      z-index: 999;
+      font-size: 20px;
+      cursor: pointer;
+      background-color: #e75480;
+      color: white;
+      padding: 10px 15px;
+      border: none;
+      border-radius: 5px;
+    }
+
+    /* Modal Styles */
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 2000;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      overflow: auto;
+      background-color: rgba(0,0,0,0.8);
+    }
+
+    .modal-content {
+      background-color: #1c1c1c;
+      margin: 5% auto;
+      padding: 30px;
+      border-radius: 12px;
+      width: 85%;
+      max-width: 900px;
+      display: flex;
+      gap: 30px;
+      align-items: flex-start;
+      position: relative;
+    }
+
+    .modal-close {
+      color: #aaa;
+      position: absolute;
+      top: 15px;
+      right: 20px;
+      font-size: 32px;
+      font-weight: bold;
+      cursor: pointer;
+      z-index: 10;
+    }
+
+    .modal-close:hover {
+      color: white;
+    }
+
+    .modal-image {
+      width: 300px;
+      height: auto;
+      border-radius: 8px;
+      flex-shrink: 0;
+    }
+
+    .modal-body {
+      flex: 1;
+      padding-top: 10px;
+    }
+
+    .modal-body h3 {
+      color: #fffef1;
+      margin-bottom: 15px;
+      font-size: 1.8rem;
+    }
+
+    .modal-body p {
+      color: #ccc;
+      line-height: 1.6;
+      margin-bottom: 20px;
+      white-space: pre-line;
+    }
+
+    .modal-btn {
+      display: inline-block;
+      background: #e75480;
+      color: white;
+      padding: 12px 24px;
+      text-decoration: none;
+      border-radius: 24px;
+      font-weight: 700;
+      margin-top: 15px;
+    }
+
+    .modal-btn:hover {
+      background: #d34672;
+    }
+
+    @media (max-width: 768px) {
+      .modal-content {
+        flex-direction: column;
+        width: 90%;
+      }
+
+      .modal-image {
+        width: 100%;
+      }
+    }
+
+    /* Section Styles */
+    section {
+      margin: 60px 0;
+    }
+
+    section h2 {
+      font-size: 3rem;
+      font-weight: 800;
+      margin-bottom: 30px;
+      border-bottom: 2px solid #fffef1;
+      display: inline-block;
+      padding-bottom: 5px;
+    }
+
+    .scroll-container {
+      display: flex;
+      gap: 20px;
+      overflow-x: auto;
+      padding: 20px 0;
+      scroll-behavior: smooth;
+    }
+
+    .scroll-container::-webkit-scrollbar {
+      height: 8px;
+    }
+
+    .scroll-container::-webkit-scrollbar-track {
+      background: #1c1c1c;
+      border-radius: 4px;
+    }
+
+    .scroll-container::-webkit-scrollbar-thumb {
+      background: #e75480;
+      border-radius: 4px;
+    }
+
+    .card {
+      background-color: #1c1c1c;
+      border-radius: 12px;
+      min-width: 250px;
+      overflow: hidden;
+      box-shadow: 0 6px 15px rgba(0,0,0,0.4);
+      transition: all 0.3s ease;
+      position: relative;
+      cursor: pointer;
+      flex-shrink: 0;
+    }
+
+    .card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: linear-gradient(135deg, #ec4899 0%, #ef4444 100%);
+      opacity: 0;
+      transition: opacity 0.3s ease;
+      z-index: 0;
+    }
+
+    .card:hover::before {
+      opacity: 1;
+    }
+
+    .card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 12px 24px rgba(236, 72, 153, 0.3);
+    }
+
+    .card img {
+      width: 100%;
+      height: 300px;
+      object-fit: cover;
+      position: relative;
+      z-index: 1;
+      transition: transform 0.3s ease;
+    }
+
+    .card:hover img {
+      transform: scale(1.05);
+    }
+
+    .card p {
+      display: none;
+    }
+
+    .card .btn {
+      display: block;
+      background: #e75480;
+      color: #ffffff;
+      padding: 10px 16px;
+      text-decoration: none;
+      border-radius: 24px;
+      font-weight: 700;
+      text-align: center;
+      width: fit-content;
+      margin: 15px auto 20px;
+      position: relative;
+      z-index: 2;
+      transition: all 0.3s ease;
+    }
+
+    .card:hover .btn {
+      background: white;
+      color: #ec4899;
+    }
+
+    @media (max-width: 768px) {
+      .hero-text h1 {
+        font-size: 2.5rem;
+      }
+
+      section h2 {
+        font-size: 2rem;
+      }
+
+      .card {
+        min-width: 200px;
+      }
+
+      .main-content {
+        padding: 0 20px;
+      }
+    }
+  </style>
 </head>
 <body>
   <!-- Sidebar -->
-<div id="sidebar" class="sidebar">
-  <button class="close-btn" onclick="closeSidebar()">×</button>
-  <nav>
-    <a href="index.html">Home</a>
-    <a href="first-time-buyers.html">First-Time Buyers</a>
-    <a href="neighborhood.html">Neighborhood & Events</a>
-    <a href="sellers.html">Sellers</a>
-    <a href="lead-magnets.html">Lead Magnets</a>
-    <a href="reel-scripts.html">Reel Scripts</a>
-  </nav>
-</div>
+  <div id="sidebar" class="sidebar">
+    <button class="close-btn" onclick="closeSidebar()">×</button>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="first-time-buyers.html">First-Time Buyers</a>
+      <a href="neighborhood.html">Neighborhood & Events</a>
+      <a href="sellers.html">Sellers</a>
+      <a href="lead-magnets.html">Lead Magnets</a>
+      <a href="reel-scripts.html">Reel Scripts</a>
+    </nav>
+  </div>
 
-<!-- Open Sidebar Button -->
-<button class="open-btn" onclick="openSidebar()">☰ Content</button>
+  <!-- Open Sidebar Button -->
+  <button class="open-btn" onclick="openSidebar()">☰ Content</button>
 
   <header class="hero">
-  <img src="assets/Header.jpeg" alt="First Time Buyers Header" class="hero-img">
-  <div class="hero-text">
-    <h1>First Time Buyers</h1>
-    <p>Templates organized for success</p>
-  </div>
-</header>
-<!-- MODAL (Add this RIGHT AFTER your closing </header> tag) -->
-<div id="templateModal" class="modal">
-  <div class="modal-content">
-    <span class="modal-close" onclick="closeModal()">&times;</span>
-    <img id="modalImage" class="modal-image" src="" alt="Template Preview">
-    <div class="modal-body">
-      <h3 id="modalTitle">Template Title</h3>
-      <p id="modalDescription">Click "Use Template" below to open this template in Canva and customize it for your real estate business.</p>
-      <a id="modalBtn" href="#" class="modal-btn" target="_blank">Use Template</a>
+    <img src="https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=1200&h=400&fit=crop" alt="First Time Buyers Header" class="hero-img">
+    <div class="hero-text">
+      <h1>First Time Buyers</h1>
+      <p>Templates organized for success</p>
+    </div>
+  </header>
+
+  <!-- MODAL -->
+  <div id="templateModal" class="modal">
+    <div class="modal-content">
+      <span class="modal-close" onclick="closeModal()">&times;</span>
+      <img id="modalImage" class="modal-image" src="" alt="Template Preview">
+      <div class="modal-body">
+        <h3 id="modalTitle">Template Title</h3>
+        <p id="modalDescription">Click "Use Template" below to open this template in Canva and customize it for your real estate business.</p>
+        <a id="modalBtn" href="#" class="modal-btn" target="_blank">Use Template</a>
+      </div>
     </div>
   </div>
-</div>
   
   <main class="main-content">
     <section>
       <h2>Reels</h2>
       <div class="scroll-container">
-        <div class="card">
-          <img src="First time buyers.png" alt="Reel 1" />
-          <p>First-time buyers, knowing this can save you thousands 💸
-Comment "TIPS" ↓ for the full list of what you need as a first time buyer!
-The 3 biggest mistakes I see:
-❌ Waiting until you have 20% down
-❌ Thinking you need perfect credit
-❌ Not negotiating closing costs
-These misconceptions cost buyers $5K-15K on average.
-Follow for more real estate tips that actually save you money 🤎 @[yourhandle]
-#firsttimebuyer #realestatetips #homebuying #realtor</p>
-         <a href="https://www.canva.com/design/DAGxk9VxXQE/aG0WwtVtiWqCt0JM9j-nUQ/view?utm_content=DAGxk9VxXQE&utm_campaign=designshare&utm_medium=link&utm_source=publishsharelink&mode=preview" 
-     class="btn" 
-     target="_blank">
-     Use Template
-  </a>
-        <div class="card">
-          <img src="Emotional Rollercoatser Of Buying Your First Home.png" alt="Reel 1" />
-          <p>First-time buyers, knowing this can save you thousands 💰
-3 things your lender won't tell you:
-→ You don't need 20% down (most first-time buyers put down 3-5%)
-→ Your credit score doesn't need to be perfect (620+ works)
-→ Closing costs can be negotiated (sellers will pay in this market)
-Most first-time buyers overpay because they don't know these secrets 🔑
-Follow along for more first-time buyer tips + real estate insights that actually save you money 💡 @[yourhandle]
-Want my free First-Time Buyer Checklist? Comment 'SAVE'! 👆
-#firsttimebuyer #realestatetips #homebuyingtips #realestateagent #buyingahome #homebuyingprocess #realtorlife #realestateadvice</p>
-         <a href="https://www.canva.com/design/DAGxksRX3_Y/f9ks4Bh8_mJ5JbghsIMeQA/view?utm_content=DAGxksRX3_Y&utm_campaign=designshare&utm_medium=link&utm_source=publishsharelink&mode=preview" 
-     class="btn" 
-     target="_blank">
-     Use Template
-  </a>
-</div>
-        <div class="card">
-          <img src="when my clients realize that these mistakes COST them so much.png" alt="Reel 1" />
-          <p>Buying Made Simple</p>
-         <a href="https://www.canva.com/design/DAGxkyjgF00/0Mo-zZjsO9fYLZ6ITUqA-g/view?utm_content=DAGxkyjgF00&utm_campaign=designshare&utm_medium=link&utm_source=publishsharelink&mode=preview" 
-     class="btn" 
-     target="_blank">
-     Use Template
-  </a>
-</div>
-        <div class="card">
-          <img src="thinking of sitting in your new home before new years.png" alt="Reel 1" />
-          <p>Buying Made Simple</p>
-         <a href="https://www.canva.com/design/DAGxki22yTQ/Y1tDgBdZ65tzE3-1CmyHBA/view?utm_content=DAGxki22yTQ&utm_campaign=designshare&utm_medium=link&utm_source=publishsharelink&mode=preview" 
-     class="btn" 
-     target="_blank">
-     Use Template
-  </a>
-</div>
-        <div class="card">
-          <img src="headache.png" alt="Reel 1" />
-          <p>Buying Made Simple</p>
-         <a href="https://www.canva.com/design/DAGxkhmDPdI/6JZOfnUKeJEeLFKvIWnPCQ/view?utm_content=DAGxkhmDPdI&utm_campaign=designshare&utm_medium=link&utm_source=publishsharelink&mode=preview" 
-     class="btn" 
-     target="_blank">
-     Use Template
-  </a>
-</div>
-        <div class="card">
-          <img src="Pre Approved.png" alt="Reel 1" />
-          <p>Buying Made Simple</p>
-         <a href="https://www.canva.com/design/DAGxkT7oQnE/mG0PZYOs9hhqxW1nua2qLg/view?utm_content=DAGxkT7oQnE&utm_campaign=designshare&utm_medium=link&utm_source=publishsharelink&mode=preview" 
-     class="btn" 
-     target="_blank">
-     Use Template
-  </a>
-</div>
-        <div class="card">
-          <img src="Closing Costs explained in 10 Seconds.png" alt="Reel 1" />
-          <p>Buying Made Simple</p>
-         <a href="https://www.canva.com/design/DAGxkQMd6hQ/IrPyg9Z2VfJhjHOfhVAXYg/view?utm_content=DAGxkQMd6hQ&utm_campaign=designshare&utm_medium=link&utm_source=publishsharelink&mode=preview" 
-     class="btn" 
-     target="_blank">
-     Use Template
-  </a>
-</div>
-        <div class="card">
-          <img src="POV You thought buying a house was just saving for the downpayment.png" alt="Reel 1" />
-          <p>Buying Made Simple</p>
-         <a href="https://www.canva.com/design/DAGxkSE2ax8/FhThi_TngGlv_k5lkeUB_g/view?utm_content=DAGxkSE2ax8&utm_campaign=designshare&utm_medium=link&utm_source=publishsharelink&mode=preview" 
-     class="btn" 
-     target="_blank">
-     Use Template
-  </a>
-</div>
-        <div class="card">
-          <img src="Second POV.png" alt="Reel 1" />
-          <p>Buying Made Simple</p>
-         <a href="https://www.canva.com/design/DAGxkbblBWQ/crRXZGhlJGN7s-uVdtbdfw/view?utm_content=DAGxkbblBWQ&utm_campaign=designshare&utm_medium=link&utm_source=publishsharelink&mode=preview" 
-     class="btn" 
-     target="_blank">
-     Use Template
-  </a>
-</div>
-        <div class="card">
-          <img src="home.png" alt="Reel 1" />
-          <p>Buying Made Simple</p>
-         <a href="https://www.canva.com/design/DAGxk9uA6v0/KNkDAF4_4wY0osKpgiBf8Q/view?utm_content=DAGxk9uA6v0&utm_campaign=designshare&utm_medium=link&utm_source=publishsharelink&mode=preview" 
-     class="btn" 
-     target="_blank">
-     Use Template
-  </a>
-</div>
+        <div class="card" onclick="openModal('https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=400&h=600&fit=crop', 'First Time Buyers Tips', 'Comment \'TIPS\' ↓ for the full list of what you need as a first time buyer!\n\nFirst-time buyers, knowing this can save you thousands 💸\n\nThe 3 biggest mistakes I see:\n❌ Waiting until you have 20% down\n❌ Thinking you need perfect credit\n❌ Not negotiating closing costs\n\nThese misconceptions cost buyers $5K-15K on average.\n\nFollow for more real estate tips that actually save you money 🤎\n\n#firsttimebuyer #realestatetips #homebuying #realtor', 'https://www.canva.com/design/DAGxk9VxXQE/aG0WwtVtiWqCt0JM9j-nUQ/view?utm_content=DAGxk9VxXQE&utm_campaign=designshare&utm_medium=link&utm_source=publishsharelink&mode=preview')">
+          <img src="https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=400&h=600&fit=crop" alt="First Time Buyers" />
+          <a href="https://www.canva.com/design/DAGxk9VxXQE/aG0WwtVtiWqCt0JM9j-nUQ/view?utm_content=DAGxk9VxXQE&utm_campaign=designshare&utm_medium=link&utm_source=publishsharelink&mode=preview" class="btn" target="_blank" onclick="event.stopPropagation();">Use Template</a>
+        </div>
+
+        <div class="card" onclick="openModal('https://images.unsplash.com/photo-1582407947304-fd86f028f716?w=400&h=600&fit=crop', 'Emotional Rollercoaster Reel', 'Comment \'SAVE\' ↓ for my free First-Time Buyer Checklist!\n\n3 things your lender won\'t tell you:\n→ You don\'t need 20% down (most first-time buyers put down 3-5%)\n→ Your credit score doesn\'t need to be perfect (620+ works)\n→ Closing costs can be negotiated (sellers will pay in this market)\n\nMost first-time buyers overpay because they don\'t know these secrets 🔑\n\nFollow along for more first-time buyer tips + real estate insights that actually save you money 💡\n\n#firsttimebuyer #realestatetips #homebuyingtips #realestateagent #buyingahome #homebuyingprocess', 'https://www.canva.com/design/DAGxksRX3_Y/f9ks4Bh8_mJ5JbghsIMeQA/view?utm_content=DAGxksRX3_Y&utm_campaign=designshare&utm_medium=link&utm_source=publishsharelink&mode=preview')">
+          <img src="https://images.unsplash.com/photo-1582407947304-fd86f028f716?w=400&h=600&fit=crop" alt="Emotional Rollercoaster" />
+          <a href="https://www.canva.com/design/DAGxksRX3_Y/f9ks4Bh8_mJ5JbghsIMeQA/view?utm_content=DAGxksRX3_Y&utm_campaign=designshare&utm_medium=link&utm_source=publishsharelink&mode=preview" class="btn" target="_blank" onclick="event.stopPropagation();">Use Template</a>
+        </div>
+
+        <div class="card" onclick="openModal('https://images.unsplash.com/photo-1512917774080-9991f1c4c750?w=400&h=600&fit=crop', 'Costly Mistakes Reel', 'Comment \'MISTAKES\' ↓ for the full breakdown\n\nWhen my clients realize these mistakes COST them so much 😱\n\nAvoid these common first-time buyer errors:\n→ Not getting pre-approved first\n→ Skipping the home inspection\n→ Maxing out their budget\n→ Forgetting about closing costs\n\nLet me help you navigate the process smoothly 💡\n\n#firsttimebuyer #homebuying #realestatetips #buyingmistakes', 'https://www.canva.com/design/DAGxkyjgF00/0Mo-zZjsO9fYLZ6ITUqA-g/view?utm_content=DAGxkyjgF00&utm_campaign=designshare&utm_medium=link&utm_source=publishsharelink&mode=preview')">
+          <img src="https://images.unsplash.com/photo-1512917774080-9991f1c4c750?w=400&h=600&fit=crop" alt="Costly Mistakes" />
+          <a href="https://www.canva.com/design/DAGxkyjgF00/0Mo-zZjsO9fYLZ6ITUqA-g/view?utm_content=DAGxkyjgF00&utm_campaign=designshare&utm_medium=link&utm_source=publishsharelink&mode=preview" class="btn" target="_blank" onclick="event.stopPropagation();">Use Template</a>
+        </div>
+
+        <div class="card" onclick="openModal('https://images.unsplash.com/photo-1560184897-ae75f418493e?w=400&h=600&fit=crop', 'New Home Before New Years', 'Comment \'HOME\' ↓ for tips to close before the holidays\n\nThinking of sitting in your new home before New Years? 🎄✨\n\nIt\'s still possible! Here\'s what you need to do NOW:\n→ Get pre-approved immediately\n→ Start viewing homes this week\n→ Be ready to make quick decisions\n→ Work with an experienced agent\n\nLet\'s make it happen! 🏡\n\n#newhome #holidays #homebuying #newyears', 'https://www.canva.com/design/DAGxki22yTQ/Y1tDgBdZ65tzE3-1CmyHBA/view?utm_content=DAGxki22yTQ&utm_campaign=designshare&utm_medium=link&utm_source=publishsharelink&mode=preview')">
+          <img src="https://images.unsplash.com/photo-1560184897-ae75f418493e?w=400&h=600&fit=crop" alt="New Home" />
+          <a href="https://www.canva.com/design/DAGxki22yTQ/Y1tDgBdZ65tzE3-1CmyHBA/view?utm_content=DAGxki22yTQ&utm_campaign=designshare&utm_medium=link&utm_source=publishsharelink&mode=preview" class="btn" target="_blank" onclick="event.stopPropagation();">Use Template</a>
+        </div>
+
+        <div class="card" onclick="openModal('https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=400&h=600&fit=crop', 'No Headache Home Buying', 'Comment \'EASY\' ↓ for my stress-free buying guide\n\nHome buying doesn\'t have to give you a headache 🤕\n\nWith the right preparation:\n→ Clear communication\n→ Realistic expectations\n→ Professional guidance\n→ Smart timeline\n\nThe process can actually be exciting! Let me show you how 💫\n\n#homebuyingtips #stressfree #firsttimehomebuyer #realestate', 'https://www.canva.com/design/DAGxkhmDPdI/6JZOfnUKeJEeLFKvIWnPCQ/view?utm_content=DAGxkhmDPdI&utm_campaign=designshare&utm_medium=link&utm_source=publishsharelink&mode=preview')">
+          <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=400&h=600&fit=crop" alt="No Headache" />
+          <a href="https://www.canva.com/design/DAGxkhmDPdI/6JZOfnUKeJEeLFKvIWnPCQ/view?utm_content=DAGxkhmDPdI&utm_campaign=designshare&utm_medium=link&utm_source=publishsharelink&mode=preview" class="btn" target="_blank" onclick="event.stopPropagation();">Use Template</a>
+        </div>
+
+        <div class="card" onclick="openModal('https://images.unsplash.com/photo-1554224311-beee180fc8f0?w=400&h=600&fit=crop', 'Pre-Approved Power', 'Comment \'APPROVED\' ↓ for the complete pre-approval checklist\n\nThat moment you get pre-approved and suddenly EVERY listing hits different 😍\n\nThe fixer-upper you scrolled past? Now it\'s got \'potential\'.\nThat house $20k over budget? \'We can make it work\'.\n\nThis is your sign to:\n→ Set your ACTUAL budget (not your approval amount)\n→ Make your must-have list\n→ Remember: pre-approved ≠ ready to max out\n→ Take a breath before falling in love with every property\n\n#preapproved #homebuyingtips #firsttimehomebuyer', 'https://www.canva.com/design/DAGxkT7oQnE/mG0PZYOs9hhqxW1nua2qLg/view?utm_content=DAGxkT7oQnE&utm_campaign=designshare&utm_medium=link&utm_source=publishsharelink&mode=preview')">
+          <img src="https://images.unsplash.com/photo-1554224311-beee180fc8f0?w=400&h=600&fit=crop" alt="Pre-Approved" />
+          <a href="https://www.canva.com/design/DAGxkT7oQnE/mG0PZYOs9hhqxW1nua2qLg/view?utm_content=DAGxkT7oQnE&utm_campaign=designshare&utm_medium=link&utm_source=publishsharelink&mode=preview" class="btn" target="_blank" onclick="event.stopPropagation();">Use Template</a>
+        </div>
+
+        <div class="card" onclick="openModal('https://images.unsplash.com/photo-1554224154-26032ffc0d07?w=400&h=600&fit=crop', 'Closing Costs Explained', 'Comment \'COSTS\' ↓ for the detailed breakdown\n\nClosing costs explained in 10 seconds ⏱️\n\n→ Typically 2-5% of home price\n→ Includes lender fees, title insurance, appraisal\n→ Can sometimes be negotiated with seller\n→ Don\'t forget to budget for these!\n\nKnowing is half the battle 💪\n\n#closingcosts #homebuyingtips #firsttimebuyer #realestate', 'https://www.canva.com/design/DAGxkQMd6hQ/IrPyg9Z2VfJhjHOfhVAXYg/view?utm_content=DAGxkQMd6hQ&utm_campaign=designshare&utm_medium=link&utm_source=publishsharelink&mode=preview')">
+          <img src="https://images.unsplash.com/photo-1554224154-26032ffc0d07?w=400&h=600&fit=crop" alt="Closing Costs" />
+          <a href="https://www.canva.com/design/DAGxkQMd6hQ/IrPyg9Z2VfJhjHOfhVAXYg/view?utm_content=DAGxkQMd6hQ&utm_campaign=designshare&utm_medium=link&utm_source=publishsharelink&mode=preview" class="btn" target="_blank" onclick="event.stopPropagation();">Use Template</a>
+        </div>
+
+        <div class="card" onclick="openModal('https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=400&h=600&fit=crop', 'POV Downpayment Reality', 'Comment \'REALITY\' ↓ for the full expense list\n\nPOV: You thought buying a house was just saving for the downpayment 😅\n\nThen you learned about:\n→ Closing costs (2-5% of purchase price)\n→ Home inspection ($300-500)\n→ Appraisal fee ($300-600)\n→ Moving costs\n→ Immediate repairs/updates\n→ New furniture needs\n\nBut don\'t let this scare you - just be prepared! 💪\n\n#homebuying #realtalk #firsttimebuyer #budgeting', 'https://www.canva.com/design/DAGxkSE2ax8/FhThi_TngGlv_k5lkeUB_g/view?utm_content=DAGxkSE2ax8&utm_campaign=designshare&utm_medium=link&utm_source=publishsharelink&mode=preview')">
+          <img src="https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=400&h=600&fit=crop" alt="POV Downpayment" />
+          <a href="https://www.canva.com/design/DAGxkSE2ax8/FhThi_TngGlv_k5lkeUB_g/view?utm_content=DAGxkSE2ax8&utm_campaign=designshare&utm_medium=link&utm_source=publishsharelink&mode=preview" class="btn" target="_blank" onclick="event.stopPropagation();">Use Template</a>
+        </div>
+
+        <div class="card" onclick="openModal('https://images.unsplash.com/photo-1582407947304-fd86f028f716?w=400&h=600&fit=crop', 'Second POV Perspective', 'Comment \'POV\' ↓ for more relatable content\n\nPOV: Experiencing the home buying journey from a different angle 👀\n\nSometimes a fresh perspective changes everything:\n→ That \'small\' house has amazing bones\n→ The \'dated\' kitchen is actually vintage charm\n→ The \'busy\' street means walkable neighborhood\n\nIt\'s all about how you see it! ✨\n\n#pov #perspective #homebuying #mindset', 'https://www.canva.com/design/DAGxkbblBWQ/crRXZGhlJGN7s-uVdtbdfw/view?utm_content=DAGxkbblBWQ&utm_campaign=designshare&utm_medium=link&utm_source=publishsharelink&mode=preview')">
+          <img src="https://images.unsplash.com/photo-1582407947304-fd86f028f716?w=400&h=600&fit=crop" alt="Second POV" />
+          <a href="https://www.canva.com/design/DAGxkbblBWQ/crRXZGhlJGN7s-uVdtbdfw/view?utm_content=DAGxkbblBWQ&utm_campaign=designshare&utm_medium=link&utm_source=publishsharelink&mode=preview" class="btn" target="_blank" onclick="event.stopPropagation();">Use Template</a>
+        </div>
+
+        <div class="card" onclick="openModal('https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=400&h=600&fit=crop', 'Dream Home Journey', 'Comment \'DREAM\' ↓ for my home finding guide\n\nThe journey to finding HOME 🏡✨\n\nIt\'s not just about:\n→ Square footage\n→ Number of bedrooms\n→ The price tag\n\nIt\'s about finding a place where your life unfolds, where memories are made, where you truly belong.\n\nLet\'s find yours together 💫\n\n#dreamhome #homebuying #journey #realestate', 'https://www.canva.com/design/DAGxk9uA6v0/KNkDAF4_4wY0osKpgiBf8Q/view?utm_content=DAGxk9uA6v0&utm_campaign=designshare&utm_medium=link&utm_source=publishsharelink&mode=preview')">
+          <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=400&h=600&fit=crop" alt="Home Journey" />
+          <a href="https://www.canva.com/design/DAGxk9uA6v0/KNkDAF4_4wY0osKpgiBf8Q/view?utm_content=DAGxk9uA6v0&utm_campaign=designshare&utm_medium=link&utm_source=publishsharelink&mode=preview" class="btn" target="_blank" onclick="event.stopPropagation();">Use Template</a>
+        </div>
       </div>
     </section>
 
     <section>
       <h2>Carousels</h2>
       <div class="scroll-container">
-        <div class="card">
-          <img src="7 Steps to buying your first home.png" alt="Carousel 1" />
-          <p>Steps to Homeownership</p>
-           <a href="https://www.canva.com/design/DAGxrsEvPcw/JTwzTHUEETVxZtK6GOWxjw/view?utm_content=DAGxrsEvPcw&utm_campaign=designshare&utm_medium=link&utm_source=publishsharelink&mode=preview" 
-     class="btn" 
-     target="_blank">
-     Use Template
-  </a>
-</div>
-         <div class="card">
-          <img src="5 Secrets That All First Time Buyers Should Know.png" alt="Carousel 1" />
-          <p>Steps to Homeownership</p>
-           <a href="https://www.canva.com/design/DAGxr95FmgI/3rAD0ZnKipPAR3oEOGDl2g/view?utm_content=DAGxr95FmgI&utm_campaign=designshare&utm_medium=link&utm_source=publishsharelink&mode=preview" 
-     class="btn" 
-     target="_blank">
-     Use Template
-  </a>
-</div>
-         <div class="card">
-          <img src="RENT Or BUY.png" alt="Carousel 1" />
-          <p>Steps to Homeownership</p>
-           <a href="https://www.canva.com/design/DAGxr5Nd79Y/RE05pSz4EzFnNk2xWGlkQw/view?utm_content=DAGxr5Nd79Y&utm_campaign=designshare&utm_medium=link&utm_source=publishsharelink&mode=preview" 
-     class="btn" 
-     target="_blank">
-     Use Template
-  </a>
-</div>
-         <div class="card">
-          <img src="5 Mistakes First Time Buyer Makes.png" alt="Carousel 1" />
-          <p>Steps to Homeownership</p>
-           <a href="https://www.canva.com/design/DAGxr-qdE8w/jv-9IhQ8Vemisr3OPSXFfw/view?utm_content=DAGxr-qdE8w&utm_campaign=designshare&utm_medium=link&utm_source=publishsharelink&mode=preview" 
-     class="btn" 
-     target="_blank">
-     Use Template
-  </a>
-</div>
-         <div class="card">
-          <img src="FAQ.png" alt="Carousel 1" />
-          <p>Steps to Homeownership</p>
-           <a href="https://www.canva.com/design/DAGxsLo_NAg/Qgn4FUGW73i-dXAowJ8rwg/view?utm_content=DAGxsLo_NAg&utm_campaign=designshare&utm_medium=link&utm_source=publishsharelink&mode=preview" 
-     class="btn" 
-     target="_blank">
-     Use Template
-  </a>
-</div>
-         <div class="card">
-          <img src="Myth Or Fact.png" alt="Carousel 1" />
-          <p>Steps to Homeownership</p>
-           <a href="https://www.canva.com/design/DAGxsIdfGRU/TG_GravQYOyNMY7gNlQRig/view?utm_content=DAGxsIdfGRU&utm_campaign=designshare&utm_medium=link&utm_source=publishsharelink&mode=preview" 
-     class="btn" 
-     target="_blank">
-     Use Template
-  </a>
-</div>
-      </div>
-    </section>
+        <div class="card" onclick="openModal('https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=400&h=600&fit=crop', '7 Steps to Buying Your First Home', 'Comment \'STEPS\' ↓ for the complete guide\n\n7 STEPS TO BUYING YOUR FIRST HOME 🏡\n\n1️⃣ Get pre-approved\n2️⃣ Determine your budget\n3️⃣ Find the right agent\n4️⃣ Start house hunting\n5️⃣ Make an offer\n6️⃣ Home inspection & appraisal\n7️⃣ Close on your home!\n\nFollow for more step-by-step guides to homeownership ✨\n\n#firsttimebuyer #homebuying #stepstoownership #realestatetips', 'https://www.canva.com/design/DAGxrsEvPcw/JTwzTHUEETVxZtK6GOWxjw/view?utm_content=DAGxrsEvPcw&utm_campaign=designshare&utm_medium=link&utm_source=publishsharelink&mode=preview')">
+          <img src="https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=400&h=600&fit=crop" alt="7 Steps Carousel" />
+          <a href="https://www.canva.com/design/DAGxrsEvPcw/JTwzTHUEETVxZtK6GOWxjw/view?utm_content=DAGxrsEvPcw&utm_campaign=designshare&utm_medium=link&utm_source=publishsharelink&mode=preview" class="btn" target="_blank" onclick="event.stopPropagation();">Use Template</a>
+        </div>
 
-    <section>
-      <h2>Stories</h2>
-      <div class="scroll-container">
-        <div class="card">
-          <img src="First time buyer tips dropping Friday.png" alt="Story 1" />
-          <p>First time buyer tips dropping Friday.png</p>
-             <a href="https://www.canva.com/design/DAGxlDnBuCU/wud6l4ls0vG99MRahcfbEg/view?utm_content=DAGxlDnBuCU&utm_campaign=designshare&utm_medium=link&utm_source=publishsharelink&mode=preview" 
-     class="btn" 
-     target="_blank">
-     Use Template
-  </a>
-</div>
-        <div class="card">
-          <img src="What are your thoughts.png" alt="Story 1" />
-          <p>What are your thoughts.png</p>
-             <a href="https://www.canva.com/design/DAGxkhmDPdI/6JZOfnUKeJEeLFKvIWnPCQ/view?utm_content=DAGxkhmDPdI&utm_campaign=designshare&utm_medium=link&utm_source=publishsharelink&mode=preview" 
-     class="btn" 
-     target="_blank">
-     Use Template
-  </a>
-</div>
-        <div class="card">
-          <img src="Which would you pick for your first home.png" alt="Story 1" />
-          <p>Which would you pick for your first home.png</p>
-             <a href="https://www.canva.com/design/DAGxk__kODE/VwhfpV7G3Jm66R-QApldqA/view?utm_content=DAGxk__kODE&utm_campaign=designshare&utm_medium=link&utm_source=publishsharelink&mode=preview" 
-     class="btn" 
-     target="_blank">
-     Use Template
-  </a>
-</div>
-        <div class="card">
-          <img src="Have you talked to a lender yet.png" alt="Story 1" />
-          <p>Have you talked to a lender yet.png</p>
-             <a href="https://www.canva.com/design/DAGxk4qxPjc/1dFOyoq7ps1GOBdWGkdUtw/view?utm_content=DAGxk4qxPjc&utm_campaign=designshare&utm_medium=link&utm_source=publishsharelink&mode=preview" 
-     class="btn" 
-     target="_blank">
-     Use Template
-  </a>
-</div>
-        <div class="card">
-          <img src="True or false.png" alt="Story 1" />
-          <p>True or false.png</p>
-             <a href="https://www.canva.com/design/DAGxk3WhDiM/njNeFtHR52mbk_3AwynazA/view?utm_content=DAGxk3WhDiM&utm_campaign=designshare&utm_medium=link&utm_source=publishsharelink&mode=preview" 
-     class="btn" 
-     target="_blank">
-     Use Template
-  </a>
-</div>
-      </div>
-    </section>
-  </main>
-
-<script src="assets/script.js"></script>
-
-</body>
-</html>
+        <div class="card" onclick="openModal('https://images.unsplash.com/photo-1582407947304-fd86f028f716?w=400&h=600&fit=crop', '5 Secrets First-Time Buyers Should Know', 'Comment \'SECRETS\' ↓ for insider tips\n\n5 SECRETS ALL FIRST-TIME BUYERS SHOULD KNOW 🔑\n\n1️⃣ You don\'t need 20% down\n2️⃣ Closing costs are negotiable\
