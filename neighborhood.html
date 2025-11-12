@@ -3,259 +3,516 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>First-Time Buyers | Ravierra.Co</title>
-<link rel="stylesheet" href="assets/style.css">
+  <title>Neighborhood & Events | Ravierra.Co</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Bodoni Moda', 'Questrial', serif;
+      background-color: #032b22;
+      color: white;
+    }
 
+    .main-content {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 40px;
+    }
+
+    .hero {
+      position: relative;
+      text-align: center;
+      color: white;
+      margin-bottom: 40px;
+    }
+
+    .hero-img {
+      width: 100%;
+      height: 400px;
+      object-fit: cover;
+      filter: brightness(0.7);
+    }
+
+    .hero-text {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      z-index: 10;
+    }
+
+    .hero-text h1 {
+      font-size: 4rem;
+      margin: 0;
+      text-shadow: 2px 2px 4px rgba(0,0,0,0.8);
+    }
+
+    .hero-text p {
+      font-size: 1.5rem;
+      margin: 10px 0 0;
+      text-shadow: 1px 1px 3px rgba(0,0,0,0.8);
+    }
+
+    /* Sidebar Styles */
+    .sidebar {
+      height: 100%;
+      width: 0;
+      position: fixed;
+      z-index: 1000;
+      top: 0;
+      left: 0;
+      background-color: #111;
+      overflow-x: hidden;
+      transition: 0.3s;
+      padding-top: 60px;
+    }
+
+    .sidebar a {
+      padding: 15px 30px;
+      text-decoration: none;
+      font-size: 1.2rem;
+      color: white;
+      display: block;
+      transition: 0.3s;
+    }
+
+    .sidebar a:hover {
+      background-color: #e75480;
+    }
+
+    .sidebar .close-btn {
+      position: absolute;
+      top: 10px;
+      right: 25px;
+      font-size: 36px;
+      background: none;
+      border: none;
+      color: white;
+      cursor: pointer;
+    }
+
+    .open-btn {
+      position: fixed;
+      top: 20px;
+      left: 20px;
+      z-index: 999;
+      font-size: 20px;
+      cursor: pointer;
+      background-color: #e75480;
+      color: white;
+      padding: 10px 15px;
+      border: none;
+      border-radius: 5px;
+    }
+
+    /* Modal Styles */
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 2000;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      overflow: auto;
+      background-color: rgba(0,0,0,0.8);
+    }
+
+    .modal-content {
+      background-color: #1c1c1c;
+      margin: 5% auto;
+      padding: 30px;
+      border-radius: 12px;
+      width: 85%;
+      max-width: 900px;
+      display: flex;
+      gap: 30px;
+      align-items: flex-start;
+      position: relative;
+    }
+
+    .modal-close {
+      color: #aaa;
+      position: absolute;
+      top: 15px;
+      right: 20px;
+      font-size: 32px;
+      font-weight: bold;
+      cursor: pointer;
+      z-index: 10;
+    }
+
+    .modal-close:hover {
+      color: white;
+    }
+
+    .modal-image {
+      width: 300px;
+      height: auto;
+      border-radius: 8px;
+      flex-shrink: 0;
+    }
+
+    .modal-body {
+      flex: 1;
+      padding-top: 10px;
+    }
+
+    .modal-body h3 {
+      color: #fffef1;
+      margin-bottom: 15px;
+      font-size: 1.8rem;
+    }
+
+    .modal-body p {
+      color: #ccc;
+      line-height: 1.6;
+      margin-bottom: 20px;
+      white-space: pre-line;
+    }
+
+    .modal-btn {
+      display: inline-block;
+      background: #e75480;
+      color: white;
+      padding: 12px 24px;
+      text-decoration: none;
+      border-radius: 24px;
+      font-weight: 700;
+      margin-top: 15px;
+    }
+
+    .modal-btn:hover {
+      background: #d34672;
+    }
+
+    @media (max-width: 768px) {
+      .modal-content {
+        flex-direction: column;
+        width: 90%;
+      }
+
+      .modal-image {
+        width: 100%;
+      }
+    }
+
+    /* Section Styles */
+    section {
+      margin: 60px 0;
+    }
+
+    section h2 {
+      font-size: 3rem;
+      font-weight: 800;
+      margin-bottom: 30px;
+      border-bottom: 2px solid #fffef1;
+      display: inline-block;
+      padding-bottom: 5px;
+    }
+
+    .scroll-container {
+      display: flex;
+      gap: 20px;
+      overflow-x: auto;
+      padding: 20px 0;
+      scroll-behavior: smooth;
+    }
+
+    .scroll-container::-webkit-scrollbar {
+      height: 8px;
+    }
+
+    .scroll-container::-webkit-scrollbar-track {
+      background: #1c1c1c;
+      border-radius: 4px;
+    }
+
+    .scroll-container::-webkit-scrollbar-thumb {
+      background: #e75480;
+      border-radius: 4px;
+    }
+
+    .card {
+      background-color: #1c1c1c;
+      border-radius: 12px;
+      min-width: 250px;
+      overflow: hidden;
+      box-shadow: 0 6px 15px rgba(0,0,0,0.4);
+      transition: all 0.3s ease;
+      position: relative;
+      cursor: pointer;
+      flex-shrink: 0;
+    }
+
+    .card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: linear-gradient(135deg, #ec4899 0%, #ef4444 100%);
+      opacity: 0;
+      transition: opacity 0.3s ease;
+      z-index: 0;
+    }
+
+    .card:hover::before {
+      opacity: 1;
+    }
+
+    .card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 12px 24px rgba(236, 72, 153, 0.3);
+    }
+
+    .card img {
+      width: 100%;
+      height: 300px;
+      object-fit: cover;
+      position: relative;
+      z-index: 1;
+      transition: transform 0.3s ease;
+    }
+
+    .card:hover img {
+      transform: scale(1.05);
+    }
+
+    .card p {
+      display: none;
+    }
+
+    .card .btn {
+      display: block;
+      background: #e75480;
+      color: #ffffff;
+      padding: 10px 16px;
+      text-decoration: none;
+      border-radius: 24px;
+      font-weight: 700;
+      text-align: center;
+      width: fit-content;
+      margin: 15px auto 20px;
+      position: relative;
+      z-index: 2;
+      transition: all 0.3s ease;
+    }
+
+    .card:hover .btn {
+      background: white;
+      color: #ec4899;
+    }
+
+    @media (max-width: 768px) {
+      .hero-text h1 {
+        font-size: 2.5rem;
+      }
+
+      section h2 {
+        font-size: 2rem;
+      }
+
+      .card {
+        min-width: 200px;
+      }
+
+      .main-content {
+        padding: 0 20px;
+      }
+    }
+  </style>
 </head>
 <body>
- <!-- Sidebar (same on every page) -->
-<div id="sidebar" class="sidebar">
-  <button class="close-btn" onclick="closeSidebar()" aria-label="Close sidebar">×</button>
-  <nav>
-    <a href="index.html">Home</a>
-    <a href="first-time-buyers.html">First-Time Buyers</a>
-    <a href="neighborhood.html">Neighborhood & Events</a>
-    <a href="sellers.html">Sellers</a>
-    <a href="lead-magnets.html">Lead Magnets</a>
-    <a href="reel-scripts.html">Reel Scripts</a>
-  </nav>
-</div>
-
-<!-- Open button (place inside header so it overlays the hero) -->
-<button class="open-btn" onclick="openSidebar()" aria-label="Open content">☰ Content</button> 
-  <header class="hero">
-  <img src="assets/Header.jpeg" alt="Neighborhood" class="hero-img">
-  <div class="hero-text">
-    <h1>Neighborhood Highlights</h1>
-    <p>Showcase communities and local events</p>
+  <!-- Sidebar -->
+  <div id="sidebar" class="sidebar">
+    <button class="close-btn" onclick="closeSidebar()" aria-label="Close sidebar">×</button>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="first-time-buyers.html">First-Time Buyers</a>
+      <a href="neighborhood.html">Neighborhood & Events</a>
+      <a href="sellers.html">Sellers</a>
+      <a href="lead-magnets.html">Lead Magnets</a>
+      <a href="reel-scripts.html">Reel Scripts</a>
+    </nav>
   </div>
-</header>
-  <!-- MODAL (Add this RIGHT AFTER your closing </header> tag) -->
-<div id="templateModal" class="modal">
-  <div class="modal-content">
-    <span class="modal-close" onclick="closeModal()">&times;</span>
-    <img id="modalImage" class="modal-image" src="" alt="Template Preview">
-    <div class="modal-body">
-      <h3 id="modalTitle">Template Title</h3>
-      <p id="modalDescription">Click "Use Template" below to open this template in Canva and customize it for your real estate business.</p>
-      <a id="modalBtn" href="#" class="modal-btn" target="_blank">Use Template</a>
+
+  <!-- Open Sidebar Button -->
+  <button class="open-btn" onclick="openSidebar()" aria-label="Open content">☰ Content</button>
+
+  <header class="hero">
+    <img src="https://images.unsplash.com/photo-1449844908441-8829872d2607?w=1200&h=400&fit=crop" alt="Neighborhood" class="hero-img">
+    <div class="hero-text">
+      <h1>Neighborhood Highlights</h1>
+      <p>Showcase communities and local events</p>
+    </div>
+  </header>
+
+  <!-- MODAL -->
+  <div id="templateModal" class="modal">
+    <div class="modal-content">
+      <span class="modal-close" onclick="closeModal()">&times;</span>
+      <img id="modalImage" class="modal-image" src="" alt="Template Preview">
+      <div class="modal-body">
+        <h3 id="modalTitle">Template Title</h3>
+        <p id="modalDescription">Click "Use Template" below to open this template in Canva and customize it for your real estate business.</p>
+        <a id="modalBtn" href="#" class="modal-btn" target="_blank">Use Template</a>
+      </div>
     </div>
   </div>
-</div>
-
-
 
   <main class="main-content">
     <section>
       <h2>Reels</h2>
       <div class="scroll-container">
-        <div class="card">
-          <img src="Neighborhood Glow Up.png" alt="Reel 1" />
-          <p>Buying Made Simple</p>
-         <a href="https://www.canva.com/design/DAGyIb6nzVc/afG4jIGsMmeRr1XWnWnV7Q/view?utm_content=DAGyIb6nzVc&utm_campaign=designshare&utm_medium=link&utm_source=publishsharelink&mode=preview" 
-     class="btn" 
-     target="_blank">
-     Use Template
-  </a>
-</div>
-        <div class="card">
-          <img src="Saturday Morning Stroll (1).png" alt="Reel 1" />
-          <p>Buying Made Simple</p>
-         <a href="https://www.canva.com/design/DAGxk9VxXQE/aG0WwtVtiWqCt0JM9j-nUQ/view?utm_content=DAGxk9VxXQE&utm_campaign=designshare&utm_medium=link&utm_source=publishsharelink&mode=preview" 
-     class="btn" 
-     target="_blank">
-     Use Template
-  </a>
-</div>
-        <div class="card">
-          <img src="Heres a secret.png" alt="Reel 1" />
-          <p>Buying Made Simple</p>
-         <a href="https://www.canva.com/design/DAGyIYlMHwI/DOKhW1VzXKmw1ZbpPAm6FA/view?utm_content=DAGyIYlMHwI&utm_campaign=designshare&utm_medium=link&utm_source=publishsharelink&mode=preview" 
-     class="btn" 
-     target="_blank">
-     Use Template
-  </a>
-</div>
-        <div class="card">
-          <img src="You can get all this for [price].png" alt="Reel 1" />
-          <p>Buying Made Simple</p>
-         <a href="https://www.canva.com/design/DAGyIWJ9kZg/4ykrArpVI14GNuFBCJj3hA/view?utm_content=DAGyIWJ9kZg&utm_campaign=designshare&utm_medium=link&utm_source=publishsharelink&mode=preview" 
-     class="btn" 
-     target="_blank">
-     Use Template
-  </a>
-</div>
-        <div class="card">
-          <img src="You're 30minuites away.png" alt="Reel 1" />
-          <p>Buying Made Simple</p>
-         <a href="https://www.canva.com/design/DAGyIY_U2fk/sVrchISt0Gi11fDOozAqDw/view?utm_content=DAGyIY_U2fk&utm_campaign=designshare&utm_medium=link&utm_source=publishsharelink&mode=preview" 
-     class="btn" 
-     target="_blank">
-     Use Template
-  </a>
-</div>
-        <div class="card">
-          <img src="The dream life.png" alt="Reel 1" />
-          <p>Buying Made Simple</p>
-         <a href="https://www.canva.com/design/DAGyISR7nro/IAtLGLjhg_39MOTM-EnZYQ/view?utm_content=DAGyISR7nro&utm_campaign=designshare&utm_medium=link&utm_source=publishsharelink&mode=preview" 
-     class="btn" 
-     target="_blank">
-     Use Template
-  </a>
-</div>
-        <div class="card">
-          <img src="[City] in 3 words.png" alt="Reel 1" />
-          <p>Buying Made Simple</p>
-         <a href="https://www.canva.com/design/DAGyIQgcjZE/uuABoKhFev6EMduRqo0YMg/view?utm_content=DAGyIQgcjZE&utm_campaign=designshare&utm_medium=link&utm_source=publishsharelink&mode=preview" 
-     class="btn" 
-     target="_blank">
-     Use Template
-  </a>
-</div>
+        <div class="card" onclick="openModal('https://images.unsplash.com/photo-1449844908441-8829872d2607?w=400&h=600&fit=crop', 'Neighborhood Glow Up', 'Comment \'GLOWUP\' ↓ for more transformation stories\n\nThis neighborhood had the biggest glow-up 🌟\n\nWhat it was 5 years ago:\n→ Overlooked and undervalued\n→ Minimal investment\n→ Hidden potential\n\nWhat it is NOW:\n→ Trendy cafes and boutiques\n→ Property values up 40%\n→ The place to be\n\nThis is why I always say: invest in the neighborhood, not just the house 📍\n\n#neighborhoodtransformation #realestate #investing #community', 'https://www.canva.com/design/DAGyIb6nzVc/afG4jIGsMmeRr1XWnWnV7Q/view?utm_content=DAGyIb6nzVc&utm_campaign=designshare&utm_medium=link&utm_source=publishsharelink&mode=preview')">
+          <img src="https://images.unsplash.com/photo-1449844908441-8829872d2607?w=400&h=600&fit=crop" alt="Neighborhood Glow Up" />
+          <a href="https://www.canva.com/design/DAGyIb6nzVc/afG4jIGsMmeRr1XWnWnV7Q/view?utm_content=DAGyIb6nzVc&utm_campaign=designshare&utm_medium=link&utm_source=publishsharelink&mode=preview" class="btn" target="_blank" onclick="event.stopPropagation();">Use Template</a>
+        </div>
+
+        <div class="card" onclick="openModal('https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?w=400&h=600&fit=crop', 'Saturday Morning Stroll', 'Comment \'STROLL\' ↓ for the complete neighborhood guide\n\nSaturday morning strolls in [Neighborhood] hit different 🌅☕\n\nWhat you\'ll find:\n→ Fresh farmers market (8am-12pm)\n→ Best coffee at [Local Cafe]\n→ Dog-friendly parks everywhere\n→ Friendly faces who say good morning\n\nThis is what community feels like 💛\n\nThinking about moving here? Let\'s talk about what makes this neighborhood special.\n\n#saturdayvibes #neighborhood #community #localliving', 'https://www.canva.com/design/DAGxk9VxXQE/aG0WwtVtiWqCt0JM9j-nUQ/view?utm_content=DAGxk9VxXQE&utm_campaign=designshare&utm_medium=link&utm_source=publishsharelink&mode=preview')">
+          <img src="https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?w=400&h=600&fit=crop" alt="Saturday Morning" />
+          <a href="https://www.canva.com/design/DAGxk9VxXQE/aG0WwtVtiWqCt0JM9j-nUQ/view?utm_content=DAGxk9VxXQE&utm_campaign=designshare&utm_medium=link&utm_source=publishsharelink&mode=preview" class="btn" target="_blank" onclick="event.stopPropagation();">Use Template</a>
+        </div>
+
+        <div class="card" onclick="openModal('https://images.unsplash.com/photo-1464047736614-af63643285bf?w=400&h=600&fit=crop', 'Here\'s a Secret', 'Comment \'SECRET\' ↓ for the insider neighborhood list\n\nHere\'s a secret about [Neighborhood] that most people don\'t know 🤫\n\nEveryone thinks it\'s expensive, but:\n→ There are pockets under $[price]\n→ HOA fees are surprisingly low\n→ Tax rates better than neighboring areas\n→ 15 min to downtown (not 30+ like people think)\n\nThe locals who know, KNOW. And they\'re not leaving 📍\n\nWant the full breakdown? DM me \'NEIGHBORHOOD\'\n\n#hiddengem #neighborhood #realestate #localsecrets', 'https://www.canva.com/design/DAGyIYlMHwI/DOKhW1VzXKmw1ZbpPAm6FA/view?utm_content=DAGyIYlMHwI&utm_campaign=designshare&utm_medium=link&utm_source=publishsharelink&mode=preview')">
+          <img src="https://images.unsplash.com/photo-1464047736614-af63643285bf?w=400&h=600&fit=crop" alt="Secret Spot" />
+          <a href="https://www.canva.com/design/DAGyIYlMHwI/DOKhW1VzXKmw1ZbpPAm6FA/view?utm_content=DAGyIYlMHwI&utm_campaign=designshare&utm_medium=link&utm_source=publishsharelink&mode=preview" class="btn" target="_blank" onclick="event.stopPropagation();">Use Template</a>
+        </div>
+
+        <div class="card" onclick="openModal('https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=400&h=600&fit=crop', 'All This For [Price]', 'Comment \'PRICE\' ↓ for current listings in this range\n\nYou can get ALL THIS for $[price] in [Neighborhood]! 🏡✨\n\n✓ 3 bed, 2 bath\n✓ Updated kitchen\n✓ Walkable to restaurants & shops\n✓ Top-rated school district\n✓ Community pool & parks\n✓ 20 min to downtown\n\nPeople are shocked when they see what their budget actually gets them here.\n\nReady to see what\'s available? Link in bio 👆\n\n#affordablehomes #realestate #homeforsale #neighborhood', 'https://www.canva.com/design/DAGyIWJ9kZg/4ykrArpVI14GNuFBCJj3hA/view?utm_content=DAGyIWJ9kZg&utm_campaign=designshare&utm_medium=link&utm_source=publishsharelink&mode=preview')">
+          <img src="https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=400&h=600&fit=crop" alt="Price Value" />
+          <a href="https://www.canva.com/design/DAGyIWJ9kZg/4ykrArpVI14GNuFBCJj3hA/view?utm_content=DAGyIWJ9kZg&utm_campaign=designshare&utm_medium=link&utm_source=publishsharelink&mode=preview" class="btn" target="_blank" onclick="event.stopPropagation();">Use Template</a>
+        </div>
+
+        <div class="card" onclick="openModal('https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=400&h=600&fit=crop', '30 Minutes Away Paradise', 'Comment \'ESCAPE\' ↓ for weekend getaway ideas\n\nYou\'re 30 minutes away from THIS and you didn\'t even know it 🏔️✨\n\n[Location]:\n→ Hiking trails for all levels\n→ Hidden waterfalls\n→ Stunning viewpoints\n→ Perfect for sunrise coffee\n→ Dog-friendly paths\n\nLiving in [City] means having adventure at your doorstep. This is why people move here and never leave 💚\n\n#localadventures #weekend #hiking #citylife #explore', 'https://www.canva.com/design/DAGyIY_U2fk/sVrchISt0Gi11fDOozAqDw/view?utm_content=DAGyIY_U2fk&utm_campaign=designshare&utm_medium=link&utm_source=publishsharelink&mode=preview')">
+          <img src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=400&h=600&fit=crop" alt="30 Minutes Away" />
+          <a href="https://www.canva.com/design/DAGyIY_U2fk/sVrchISt0Gi11fDOozAqDw/view?utm_content=DAGyIY_U2fk&utm_campaign=designshare&utm_medium=link&utm_source=publishsharelink&mode=preview" class="btn" target="_blank" onclick="event.stopPropagation();">Use Template</a>
+        </div>
+
+        <div class="card" onclick="openModal('https://images.unsplash.com/photo-1464093515883-ec948246accb?w=400&h=600&fit=crop', 'The Dream Life', 'Comment \'DREAM\' ↓ for neighborhood recommendations\n\nThe dream life you\'re scrolling past exists 20 minutes from where you are right now 🌅\n\n[Neighborhood] offers:\n→ Slower pace, but still connected\n→ Community events every weekend\n→ Local businesses you\'ll love\n→ Safe streets for evening walks\n→ Neighbors who become friends\n\nStop dreaming. Start living. Let\'s find your spot 🏡\n\n#dreamlife #community #slowliving #neighborhood #realestate', 'https://www.canva.com/design/DAGyISR7nro/IAtLGLjhg_39MOTM-EnZYQ/view?utm_content=DAGyISR7nro&utm_campaign=designshare&utm_medium=link&utm_source=publishsharelink&mode=preview')">
+          <img src="https://images.unsplash.com/photo-1464093515883-ec948246accb?w=400&h=600&fit=crop" alt="Dream Life" />
+          <a href="https://www.canva.com/design/DAGyISR7nro/IAtLGLjhg_39MOTM-EnZYQ/view?utm_content=DAGyISR7nro&utm_campaign=designshare&utm_medium=link&utm_source=publishsharelink&mode=preview" class="btn" target="_blank" onclick="event.stopPropagation();">Use Template</a>
+        </div>
+
+        <div class="card" onclick="openModal('https://images.unsplash.com/photo-1480714378408-67cf0d13bc1b?w=400&h=600&fit=crop', '[City] in 3 Words', 'Comment YOUR 3 words below! 👇\n\n[City] in 3 words:\n\n🌟 Vibrant\n💚 Welcoming  \n🏡 Growing\n\nThis city has a special energy that you just have to experience to understand. From the local coffee shops to the weekend markets, there\'s always something happening.\n\nWhat 3 words would YOU use to describe [City]?\n\n#citylife #community #locallove #neighborhood', 'https://www.canva.com/design/DAGyIQgcjZE/uuABoKhFev6EMduRqo0YMg/view?utm_content=DAGyIQgcjZE&utm_campaign=designshare&utm_medium=link&utm_source=publishsharelink&mode=preview')">
+          <img src="https://images.unsplash.com/photo-1480714378408-67cf0d13bc1b?w=400&h=600&fit=crop" alt="City in 3 Words" />
+          <a href="https://www.canva.com/design/DAGyIQgcjZE/uuABoKhFev6EMduRqo0YMg/view?utm_content=DAGyIQgcjZE&utm_campaign=designshare&utm_medium=link&utm_source=publishsharelink&mode=preview" class="btn" target="_blank" onclick="event.stopPropagation();">Use Template</a>
+        </div>
       </div>
     </section>
 
     <section>
       <h2>Carousels</h2>
       <div class="scroll-container">
-        <div class="card">
-          <img src="EVENTS IN [CITY] THIS MONTH.png" alt="Carousel 1" />
-          <p>Steps to Homeownership</p>
-           <a href="https://www.canva.com/design/DAGyIYkh3Z0/KJBcl4Q060tzJjzMsaXe-A/view?utm_content=DAGyIYkh3Z0&utm_campaign=designshare&utm_medium=link&utm_source=publishsharelink&mode=preview" 
-     class="btn" 
-     target="_blank">
-     Use Template
-  </a>
-</div>
-         <div class="card">
-          <img src="5 Reasons People Love Living In [City].png" alt="Carousel 1" />
-          <p>Steps to Homeownership</p>
-           <a href="https://www.canva.com/design/DAGyJbU3tYA/wF2qHx9tT4bYP6JTjzIARg/view?utm_content=DAGyJbU3tYA&utm_campaign=designshare&utm_medium=link&utm_source=publishsharelink&mode=preview" 
-     class="btn" 
-     target="_blank">
-     Use Template
-  </a>
-</div>
-         <div class="card">
-          <img src="What my Saturday looks like as [city] realtor.png" alt="Carousel 1" />
-          <p>Steps to Homeownership</p>
-           <a href="https://www.canva.com/design/DAGyIT4Z29o/3thiuiqBSHj3eyyymgolKQ/view?utm_content=DAGyIT4Z29o&utm_campaign=designshare&utm_medium=link&utm_source=publishsharelink&mode=preview" 
-     class="btn" 
-     target="_blank">
-     Use Template
-  </a>
-</div>
-         <div class="card">
-          <img src="What would happen if you moved here.png" alt="Carousel 1" />
-          <p>Steps to Homeownership</p>
-           <a href="https://www.canva.com/design/DAGyIeinxUY/MQnkejWAdseepp1Zq570DA/view?utm_content=DAGyIeinxUY&utm_campaign=designshare&utm_medium=link&utm_source=publishsharelink&mode=preview" 
-     class="btn" 
-     target="_blank">
-     Use Template
-  </a>
-</div>
-         <div class="card">
-          <img src="Your paragraph text.png" alt="Carousel 1" />
-          <p>Steps to Homeownership</p>
-           <a href="https://www.canva.com/design/DAGyIXBcmec/zCeT5Wm1RjLx9DocmQcpug/view?utm_content=DAGyIXBcmec&utm_campaign=designshare&utm_medium=link&utm_source=publishsharelink&mode=preview" 
-     class="btn" 
-     target="_blank">
-     Use Template
-  </a>
-</div>
-         <div class="card">
-          <img src="If Cost Is Overwhelming Start Here.png" alt="Carousel 1" />
-          <p>Steps to Homeownership</p>
-           <a href="https://www.canva.com/design/DAGyISLUqI8/2FkwsTIc1npSUszzJRcVqQ/view?utm_content=DAGyISLUqI8&utm_campaign=designshare&utm_medium=link&utm_source=publishsharelink&mode=preview" 
-     class="btn" 
-     target="_blank">
-     Use Template
-  </a>
-</div>
+        <div class="card" onclick="openModal('https://images.unsplash.com/photo-1492684223066-81342ee5ff30?w=400&h=600&fit=crop', 'Events In [City] This Month', 'Comment \'EVENTS\' ↓ for the complete calendar\n\nEVENTS IN [CITY] THIS MONTH 📅🎉\n\nWeek 1:\n→ Farmers Market Opening Day (Saturday)\n→ Live Music at [Venue] (Friday)\n\nWeek 2:\n→ Art Walk Downtown (Thursday)\n→ Food Truck Festival (Sunday)\n\nWeek 3:\n→ Community Yoga in the Park (Wednesday)\n→ [Annual Event] (Weekend)\n\nWeek 4:\n→ [Holiday/Special Event]\n→ Monthly Networking Mixer\n\nThis is what makes [City] special - there\'s always something happening! 🌟\n\n#cityevents #community #thingstodo #localevents', 'https://www.canva.com/design/DAGyIYkh3Z0/KJBcl4Q060tzJjzMsaXe-A/view?utm_content=DAGyIYkh3Z0&utm_campaign=designshare&utm_medium=link&utm_source=publishsharelink&mode=preview')">
+          <img src="https://images.unsplash.com/photo-1492684223066-81342ee5ff30?w=400&h=600&fit=crop" alt="City Events" />
+          <a href="https://www.canva.com/design/DAGyIYkh3Z0/KJBcl4Q060tzJjzMsaXe-A/view?utm_content=DAGyIYkh3Z0&utm_campaign=designshare&utm_medium=link&utm_source=publishsharelink&mode=preview" class="btn" target="_blank" onclick="event.stopPropagation();">Use Template</a>
+        </div>
+
+        <div class="card" onclick="openModal('https://images.unsplash.com/photo-1511895426328-dc8714191300?w=400&h=600&fit=crop', '5 Reasons People Love Living In [City]', 'Comment \'LOVE\' ↓ and tell me YOUR reason!\n\n5 REASONS PEOPLE LOVE LIVING IN [CITY] 💚\n\n1️⃣ COMMUNITY VIBE\nActual neighbors who wave and chat\n\n2️⃣ LOCAL EVERYTHING\nFarmers markets, boutiques, coffee shops\n\n3️⃣ OUTDOOR ACCESS\nParks, trails, and green spaces everywhere\n\n4️⃣ GROWING ECONOMY\nNew businesses + stable job market\n\n5️⃣ PERFECT LOCATION\nClose to city amenities, but peaceful\n\nOnce people move here, they rarely leave 🏡\n\n#lovewhereyoulive #community #citylife #realestate', 'https://www.canva.com/design/DAGyJbU3tYA/wF2qHx9tT4bYP6JTjzIARg/view?utm_content=DAGyJbU3tYA&utm_campaign=designshare&utm_medium=link&utm_source=publishsharelink&mode=preview')">
+          <img src="https://images.unsplash.com/photo-1511895426328-dc8714191300?w=400&h=600&fit=crop" alt="5 Reasons" />
+          <a href="https://www.canva.com/design/DAGyJbU3tYA/wF2qHx9tT4bYP6JTjzIARg/view?utm_content=DAGyJbU3tYA&utm_campaign=designshare&utm_medium=link&utm_source=publishsharelink&mode=preview" class="btn" target="_blank" onclick="event.stopPropagation();">Use Template</a>
+        </div>
+
+        <div class="card" onclick="openModal('https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=400&h=600&fit=crop', 'Saturday as a [City] Realtor', 'Comment \'DAY\' ↓ for behind-the-scenes content\n\nWHAT MY SATURDAY LOOKS LIKE AS A [CITY] REALTOR ☕🏡\n\n7:00 AM - Coffee at [Local Cafe]\n8:00 AM - Farmers market run\n9:30 AM - First showing\n11:00 AM - Open house prep\n12:00 PM - Open house (meet amazing people!)\n2:00 PM - Lunch at [Restaurant]\n3:00 PM - Neighborhood tour with clients\n5:00 PM - Sunset walk to scout new listings\n\nI don\'t just sell houses here - I LIVE here. That\'s the difference 🌟\n\n#realtorlife #dayinthelife #community #saturday', 'https://www.canva.com/design/DAGyIT4Z29o/3thiuiqBSHj3eyyymgolKQ/view?utm_content=DAGyIT4Z29o&utm_campaign=designshare&utm_medium=link&utm_source=publishsharelink&mode=preview')">
+          <img src="https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=400&h=600&fit=crop" alt="Saturday Schedule" />
+          <a href="https://www.canva.com/design/DAGyIT4Z29o/3thiuiqBSHj3eyyymgolKQ/view?utm_content=DAGyIT4Z29o&utm_campaign=designshare&utm_medium=link&utm_source=publishsharelink&mode=preview" class="btn" target="_blank" onclick="event.stopPropagation();">Use Template</a>
+        </div>
+
+        <div class="card" onclick="openModal('https://images.unsplash.com/photo-1464093515883-ec948246accb?w=400&h=600&fit=crop', 'What Would Happen If You Moved Here', 'Comment \'MOVE\' ↓ for personalized recommendations\n\nWHAT WOULD HAPPEN IF YOU MOVED HERE 🏡✨\n\nMONTH 1:\nYou discover your new favorite coffee spot\n\nMONTH 3:\nYou\'re on first-name basis with local shop owners\n\nMONTH 6:\nYou can\'t imagine living anywhere else\n\nYEAR 1:\nYou\'re telling everyone to move here too\n\nThis isn\'t just a place - it\'s a lifestyle change. Ready to experience it?\n\n#movingtips #newcity #lifestyle #community #realestate', 'https://www.canva.com/design/DAGyIeinxUY/MQnkejWAdseepp1Zq570DA/view?utm_content=DAGyIeinxUY&utm_campaign=designshare&utm_medium=link&utm_source=publishsharelink&mode=preview')">
+          <img src="https://images.unsplash.com/photo-1464093515883-ec948246accb?w=400&h=600&fit=crop" alt="If You Moved Here" />
+          <a href="https://www.canva.com/design/DAGyIeinxUY/MQnkejWAdseepp1Zq570DA/view?utm_content=DAGyIeinxUY&utm_campaign=designshare&utm_medium=link&utm_source=publishsharelink&mode=preview" class="btn" target="_blank" onclick="event.stopPropagation();">Use Template</a>
+        </div>
+
+        <div class="card" onclick="openModal('https://images.unsplash.com/photo-1449844908441-8829872d2607?w=400&h=600&fit=crop', 'Neighborhood Types Breakdown', 'Comment \'TYPE\' ↓ for help finding your perfect fit\n\nFINDING YOUR PERFECT NEIGHBORHOOD TYPE 📍\n\nTYPE 1: THE WALKABLE\n→ Everything within 10 min walk\n→ Coffee shops, restaurants, shops\n→ Higher prices, smaller lots\n\nTYPE 2: THE FAMILY-FOCUSED\n→ Top-rated schools\n→ Parks and playgrounds everywhere\n→ Community events monthly\n\nTYPE 3: THE PEACEFUL ESCAPE\n→ Larger lots, more privacy\n→ Nature access\n→ Quieter streets\n\nWhich type matches your lifestyle?\n\n#neighborhoods #realestate #lifestyle #moving', 'https://www.canva.com/design/DAGyIXBcmec/zCeT5Wm1RjLx9DocmQcpug/view?utm_content=DAGyIXBcmec&utm_campaign=designshare&utm_medium=link&utm_source=publishsharelink&mode=preview')">
+          <img src="https://images.unsplash.com/photo-1449844908441-8829872d2607?w=400&h=600&fit=crop" alt="Neighborhood Types" />
+          <a href="https://www.canva.com/design/DAGyIXBcmec/zCeT5Wm1RjLx9DocmQcpug/view?utm_content=DAGyIXBcmec&utm_campaign=designshare&utm_medium=link&utm_source=publishsharelink&mode=preview" class="btn" target="_blank" onclick="event.stopPropagation();">Use Template</a>
+        </div>
+
+        <div class="card" onclick="openModal('https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=400&h=600&fit=crop', 'If Cost Is Overwhelming Start Here', 'Comment \'AFFORDABLE\' ↓ for the full neighborhood breakdown\n\nIF COST IS OVERWHELMING, START HERE 💰🏡\n\nFeeling priced out of [City]? You\'re not alone. But here\'s what most people don\'t realize: there are STILL affordable pockets where your money goes further.\n\nHIDDEN GEM NEIGHBORHOODS UNDER $[PRICE]:\n\n→ [Neighborhood 1]\nFamily-friendly with great schools\n\n→ [Neighborhood 2]\nUp-and-coming with new development\n\n→ [Neighborhood 3]\nWalkable with local shops\n\nWHAT YOU GET FOR YOUR BUDGET:\n→ 3 bedrooms starting at $[price]\n→ Good bones, some updating needed\n→ Strong appreciation potential\n→ Actual community vibes\n\nStop scrolling listings you can\'t afford. Start building your strategy HERE.\n\n#affordablehomes #firsttimehomebuyer #realestate #budgetfriendly', 'https://www.canva.com/design/DAGyISLUqI8/2FkwsTIc1npSUszzJRcVqQ/view?utm_content=DAGyISLUqI8&utm_campaign=designshare&utm_medium=link&utm_source=publishsharelink&mode=preview')">
+          <img src="https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=400&h=600&fit=crop" alt="Affordable Housing" />
+          <a href="https://www.canva.com/design/DAGyISLUqI8/2FkwsTIc1npSUszzJRcVqQ/view?utm_content=DAGyISLUqI8&utm_campaign=designshare&utm_medium=link&utm_source=publishsharelink&mode=preview" class="btn" target="_blank" onclick="event.stopPropagation();">Use Template</a>
+        </div>
       </div>
     </section>
 
     <section>
       <h2>Stories</h2>
       <div class="scroll-container">
-        <div class="card">
-          <img src="this view had me breathless.png" alt="Story 1" />
-          <p>First time buyer tips dropping Friday.png</p>
-             <a href="https://www.canva.com/design/DAGyIQ-BRno/QbYVm8mEL3svHijPXL4n-w/view?utm_content=DAGyIQ-BRno&utm_campaign=designshare&utm_medium=link&utm_source=publishsharelink&mode=preview" 
-     class="btn" 
-     target="_blank">
-     Use Template
-  </a>
-</div>
-        <div class="card">
-          <img src="my new favvv spot.png" alt="Story 1" />
-          <p>What are your thoughts.png</p>
-             <a href="https://www.canva.com/design/DAGyIcuPnZM/BJSVmv71l5Tgf64wRj9QFA/view?utm_content=DAGyIcuPnZM&utm_campaign=designshare&utm_medium=link&utm_source=publishsharelink&mode=preview" 
-     class="btn" 
-     target="_blank">
-     Use Template
-  </a>
-</div>
-        <div class="card">
-          <img src="late night walk.png" alt="Story 1" />
-          <p>Which would you pick for your first home.png</p>
-             <a href="https://www.canva.com/design/DAGyIVYxjn0/fjaQRzRDZE3AwlN4pvLxIA/view?utm_content=DAGyIVYxjn0&utm_campaign=designshare&utm_medium=link&utm_source=publishsharelink&mode=preview" 
-     class="btn" 
-     target="_blank">
-     Use Template
-  </a>
-</div>
-        <div class="card">
-          <img src=" sweet tooth.png" alt="Story 1" />
-          <p>Have you talked to a lender yet.png</p>
-             <a href="https://www.canva.com/design/DAGyIWs25ls/TvzVWQqhQGXp8qTmjtUJtA/view?utm_content=DAGyIWs25ls&utm_campaign=designshare&utm_medium=link&utm_source=publishsharelink&mode=preview" 
-     class="btn" 
-     target="_blank">
-     Use Template
-  </a>
-</div>
-        <div class="card">
-          <img src="[event] is 2 days away!.png" alt="Story 1" />
-          <p>True or false.png</p>
-             <a href="https://www.canva.com/design/DAGyIWs25ls/TvzVWQqhQGXp8qTmjtUJtA/view?utm_content=DAGyIWs25ls&utm_campaign=designshare&utm_medium=link&utm_source=publishsharelink&mode=preview" 
-     class="btn" 
-     target="_blank">
-     Use Template
-  </a>
-</div>
-         <div class="card">
-          <img src="just finished my run.png" alt="Story 1" />
-          <p>True or false.png</p>
-             <a href="https://www.canva.com/design/DAGyIZBRdKc/WF2swpwCBEAwY7Sf89obBA/view?utm_content=DAGyIZBRdKc&utm_campaign=designshare&utm_medium=link&utm_source=publishsharelink&mode=preview" 
-     class="btn" 
-     target="_blank">
-     Use Template
-  </a>
-</div>
-         <div class="card">
-          <img src="camper mode activated!.png" alt="Story 1" />
-          <p>True or false.png</p>
-             <a href="https://www.canva.com/design/DAGyIcsAXG0/WIqhPMHIF0KsCtdLuFpJ7w/view?utm_content=DAGyIcsAXG0&utm_campaign=designshare&utm_medium=link&utm_source=publishsharelink&mode=preview" 
-     class="btn" 
-     target="_blank">
-     Use Template
-  </a>
-</div>
-         <div class="card">
-          <img src="my little corner of heaven.png" alt="Story 1" />
-          <p>True or false.png</p>
-             <a href="https://www.canva.com/design/DAGyIWXSsC0/YBKyB_rQzC6px-W-DGbcRA/view?utm_content=DAGyIWXSsC0&utm_campaign=designshare&utm_medium=link&utm_source=publishsharelink&mode=preview" 
-     class="btn" 
-     target="_blank">
-     Use Template
-  </a>
-</div>
+        <div class="card" onclick="openModal('https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=400&h=600&fit=crop', 'Breathless View Story', 'This view had me breathless 😍\n\n[Location] never gets old. Whether you\'re a local or just visiting, this spot hits different every single time.\n\n📍 Save this location!\n\n#views #nature #citylife #breathtaking', 'https://www.canva.com/design/DAGyIQ-BRno/QbYVm8mEL3svHijPXL4n-w/view?utm_content=DAGyIQ-BRno&utm_campaign=designshare&utm_medium=link&utm_source=publishsharelink&mode=preview')">
+          <img src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=400&h=600&fit=crop" alt="Breathless View" />
+          <a href="https://www.canva.com/design/DAGyIQ-BRno/QbYVm8mEL3svHijPXL4n-w/view?utm_content=DAGyIQ-BRno&utm_campaign=designshare&utm_medium=link&utm_source=publishsharelink&mode=preview" class="btn" target="_blank" onclick="event.stopPropagation();">Use Template</a>
+        </div>
+
+        <div class="card" onclick="openModal('https://images.unsplash.com/photo-1554224311-beee180fc8f0?w=400&h=600&fit=crop', 'My New Fav Spot', 'My new favvv spot ☕✨\n\nFound this hidden gem last week and I\'ve been back 3 times already 😅\n\n[Cafe/Location Name]\n→ Perfect coffee\n→ Amazing vibes\n→ Great for working\n\nWhere\'s YOUR favorite local spot?\n\n#localcafe #hiddengem #coffeelover #citylife', 'https://www.canva.com/design/DAGyIcuPnZM/BJSVmv71l5Tgf64wRj9QFA/view?utm_content=DAGyIcuPnZM&utm_campaign=designshare&utm_medium=link&utm_source=publishsharelink&mode=preview')">
+          <img src="https://images.unsplash.com/photo-1554224311-beee180fc8f0?w=400&h=600&fit=crop" alt="Favorite Spot" />
+          <a href="https://www.canva.com/design/DAGyIcuPnZM/BJSVmv71l5Tgf64wRj9QFA/view?utm_content=DAGyIcuPnZM&utm_campaign=designshare&utm_medium=link&utm_source=publishsharelink&mode=preview" class="btn" target="_blank" onclick="event.stopPropagation();">Use Template</a>
+        </div>
+
+        <div class="card" onclick="openModal('https://images.unsplash.com/photo-1470071459604-3b5ec3a7fe05?w=400&h=600&fit=crop', 'Late Night Walk', 'Late night walk energy 🌙\n\nOne of my favorite things about this neighborhood - I feel safe walking at any hour.\n\nThat sense of security and community? Priceless.\n\n#nightwalk #safeneighborhood #community #cityvibes', 'https://www.canva.com/design/DAGyIVYxjn0/fjaQRzRDZE3AwlN4pvLxIA/view?utm_content=DAGyIVYxjn0&utm_campaign=designshare&utm_medium=link&utm_source=publishsharelink&mode=preview')">
+          <img src="https://images.unsplash.com/photo-1470071459604-3b5ec3a7fe05?w=400&h=600&fit=crop" alt="Late Night Walk" />
+          <a href="https://www.canva.com/design/DAGyIVYxjn0/fjaQRzRDZE3AwlN4pvLxIA/view?utm_content=DAGyIVYxjn0&utm_campaign=designshare&utm_medium=link&utm_source=publishsharelink&mode=preview" class="btn" target="_blank" onclick="event.stopPropagation();">Use Template</a>
+        </div>
+
+        <div class="card" onclick="openModal('https://images.unsplash.com/photo-1488900128323-21503983a07e?w=400&h=600&fit=crop', 'Sweet Tooth Story', 'Sweet tooth satisfied 🍰✨\n\n[Bakery/Dessert Spot] coming through again with the BEST [dessert type] in town.\n\nIf you know, you know 🤤\n\n#sweettooth #localbakery #dessert #foodie', 'https://www.canva.com/design/DAGyIWs25ls/TvzVWQqhQGXp8qTmjtUJtA/view?utm_content=DAGyIWs25ls&utm_campaign=designshare&utm_medium=link&utm_source=publishsharelink&mode=preview')">
+          <img src="https://images.unsplash.com/photo-1488900128323-21503983a07e?w=400&h=600&fit=crop" alt="Sweet Tooth" />
+          <a href="https://www.canva.com/design/DAGyIWs25ls/TvzVWQqhQGXp8qTmjtUJtA/view?utm_content=DAGyIWs25ls&utm_campaign=designshare&utm_medium=link&utm_source=publishsharelink&mode=preview" class="btn" target="_blank" onclick="event.stopPropagation();">Use Template</a>
+        </div>
+
+        <div class="card" onclick="openModal('https://images.unsplash.com/photo-1492684223066-81342ee5ff30?w=400&h=600&fit=crop', 'Event Countdown Story', '[Event] is 2 days away! 🎉\n\nWho\'s going?! This is one of my favorite community events of the year.\n\n📍 [Location]\n🗓️ [Date & Time]\n\nSee you there!\n\n#communityevent #local #countdown #excited', 'https://www.canva.com/design/DAGyIWs25ls/TvzVWQqhQGXp8qTmjtUJtA/view?utm_content=DAGyIWs25ls&utm_campaign=designshare&utm_medium=link&utm_source=publishsharelink&mode=preview')">
+          <img src="https://images.unsplash.com/photo-1492684223066-81342ee5ff30?w=400&h=600&fit=crop" alt="Event Countdown" />
+          <a href="https://www.canva.com/design/DAGyIWs25ls/TvzVWQqhQGXp8qTmjtUJtA/view?utm_content=DAGyIWs25ls&utm_campaign=designshare&utm_medium=link&utm_source=publishsharelink&mode=preview" class="btn" target="_blank" onclick="event.stopPropagation();">Use Template</a>
+        </div>
+
+        <div class="card" onclick="openModal('https://images.unsplash.com/photo-1476480862126-209bfaa8edc8?w=400&h=600&fit=crop', 'Finished My Run', 'Just finished my run 🏃‍♀️💨\n\nMorning miles in this neighborhood never disappoint. The trails, the fresh air, the friendly waves from neighbors - this is living.\n\n#morningrun #fitness #neighborhood #running', 'https://www.canva.com/design/DAGyIZBRdKc/WF2swpwCBEAwY7Sf89obBA/view?utm_content=DAGyIZBRdKc&utm_campaign=designshare&utm_medium=link&utm_source=publishsharelink&mode=preview')">
+          <img src="https://images.unsplash.com/photo-1476480862126-209bfaa8edc8?w=400&h=600&fit=crop" alt="Morning Run" />
+          <a href="https://www.canva.com/design/DAGyIZBRdKc/WF2swpwCBEAwY7Sf89obBA/view?utm_content=DAGyIZBRdKc&utm_campaign=designshare&utm_medium=link&utm_source=publishsharelink&mode=preview" class="btn" target="_blank" onclick="event.stopPropagation();">Use Template</a>
+        </div>
+
+        <div class="card" onclick="openModal('https://images.unsplash.com/photo-1478131143081-80f7f84ca84d?w=400&h=600&fit=crop', 'Camper Mode Activated', 'Camper mode activated! 🏕️✨\n\nWeekend adventure just 45 minutes from home. This is what I mean when I say [City] has it all - city amenities AND outdoor access.\n\n#camping #adventure #weekend #outdoors', 'https://www.canva.com/design/DAGyIcsAXG0/WIqhPMHIF0KsCtdLuFpJ7w/view?utm_content=DAGyIcsAXG0&utm_campaign=designshare&utm_medium=link&utm_source=publishsharelink&mode=preview')">
+          <img src="https://images.unsplash.com/photo-1478131143081-80f7f84ca84d?w=400&h=600&fit=crop" alt="Camping" />
+          <a href="https://www.canva.com/design/DAGyIcsAXG0/WIqhPMHIF0KsCtdLuFpJ7w/view?utm_content=DAGyIcsAXG0&utm_campaign=designshare&utm_medium=link&utm_source=publishsharelink&mode=preview" class="btn" target="_blank" onclick="event.stopPropagation();">Use Template</a>
+        </div>
+
+        <div class="card" onclick="openModal('https://images.unsplash.com/photo-1501594907352-04cda38ebc29?w=400&h=600&fit=crop', 'My Little Corner of Heaven', 'My little corner of heaven 🌅💫\n\nEvery evening, same spot, never gets old. This is what home feels like.\n\n#sunset #peaceful #home #gratitude', 'https://www.canva.com/design/DAGyIWXSsC0/YBKyB_rQzC6px-W-DGbcRA/view?utm_content=DAGyIWXSsC0&utm_campaign=designshare&utm_medium=link&utm_source=publishsharelink&mode=preview')">
+          <img src="https://images.unsplash.com/photo-1501594907352-04cda38ebc29?w=400&h=600&fit=crop" alt="Corner of Heaven" />
+          <a href="https://www.canva.com/design/DAGyIWXSsC0/YBKyB_rQzC6px-W-DGbcRA/view?utm_content=DAGyIWXSsC0&utm_campaign=designshare&utm_medium=link&utm_source=publishsharelink&mode=preview" class="btn" target="_blank" onclick="event.stopPropagation();">Use Template</a>
+        </div>
       </div>
     </section>
   </main>
 
-<script src="assets/script.js"></script>
+  <script>
+    function openSidebar() {
+      document.getElementById("sidebar").style.width = "250px";
+    }
 
+    function closeSidebar() {
+      document.getElementById("sidebar").style.width = "0";
+    }
+
+    function openModal(imageSrc, title, description, buttonLink) {
+      document.getElementById("modalImage").src = imageSrc;
+      document.getElementById("modalTitle").innerText = title;
+      document.getElementById("modalDescription").innerText = description;
+      document.getElementById("modalBtn").href = buttonLink;
+      document.getElementById("templateModal").style.display = "block";
+    }
+
+    function closeModal() {
+      document.getElementById("templateModal").style.display = "none";
+    }
+
+    // Close modal when clicking outside of it
+    window.onclick = function(event) {
+      const modal = document.getElementById("templateModal");
+      if (event.target == modal) {
+        modal.style.display = "none";
+      }
+    }
+  </script>
 
 </body>
 </html>
